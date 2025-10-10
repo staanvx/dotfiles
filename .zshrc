@@ -118,11 +118,13 @@ alias ll="eza -la --icons --git"
 
 alias cat="bat"
 
+alias cd="z"
 # ~/.zshrc
-
-eval "$(starship init zsh)"
 
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 
 cal
