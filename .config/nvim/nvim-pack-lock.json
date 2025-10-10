@@ -1,0 +1,16 @@
+{
+  "plugins": {
+    "nvim-lspconfig": {
+      "rev": "623bcf0",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "onedarkpro.nvim": {
+      "rev": "eeac884",
+      "src": "https://github.com/olimorris/onedarkpro.nvim"
+    },
+    "vim-moonfly-colors": {
+      "rev": "343c731",
+      "src": "https://github.com/bluz71/vim-moonfly-colors"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+cd ~/projects/db-security/labs/
+
+launch --title "db-security" /bin/zsh
+focus
+

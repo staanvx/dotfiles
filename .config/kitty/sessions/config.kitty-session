@@ -1,0 +1,4 @@
+cd ~/.config
+
+launch --title "config" /bin/zsh
+focus

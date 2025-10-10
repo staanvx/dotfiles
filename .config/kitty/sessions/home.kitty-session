@@ -1,0 +1,5 @@
+cd ~
+
+launch --title "home" /bin/zsh
+focus
+

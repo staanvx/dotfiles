@@ -1,0 +1,9 @@
+
+2025/02/01 (16:06:37) | ===> btop++ v.1.4.0
+2025/02/01 (16:06:37) | ERROR: failed getting network interfaces
+
+2025/02/02 (23:17:30) | ===> btop++ v.1.4.0
+2025/02/02 (23:17:30) | ERROR: failed getting network interfaces
+
+2025/02/26 (16:01:38) | ===> btop++ v.1.4.0
+2025/02/26 (16:01:38) | ERROR: Exception in runner thread -> Proc:: -> basic_string
