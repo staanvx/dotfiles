@@ -14,7 +14,7 @@ mapfile -t files < <(find "$SESSIONS_DIR" -type f -name '*.kitty-session' | sort
 
 pick="$(printf '%s\n' "${files[@]}" |
     sed "s|^$HOME/.config/kitty/||" |
-    sk --prompt='GO to > ' --margin 10% --color=dark,matched:#00FF00,current:#c61b6e,current_bg:#000000,prompt:#00FF00)"
+    sk --prompt='GO to > ' --margin 10% --color=dark,matched:#00FF00,current:#ff5189,current_bg:#000000,prompt:#36c692)"
 
 [ -n "$pick" ] || exit 0
 
