@@ -36,6 +36,7 @@ vim.o.backspace = "indent,eol,start"
 vim.o.mouse = "a"
 vim.o.selection = "inclusive"
 vim.o.encoding = "utf-8"
+vim.o.undofile = true
 
 vim.keymap.set('n', '<leader>o', ':update <cr> :so <cr>')
 vim.keymap.set('n', '<leader>w', ':write <cr>')
@@ -45,13 +46,22 @@ vim.keymap.set('n', '<leader>q', ':quit <cr>')
 vim.opt.iskeyword:append("-")
 vim.opt.iskeyword:append("_")
 
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
 -- plugins --
 vim.pack.add({
     -- UI
-    { src = 'https://github.com/olimorris/onedarkpro.nvim' },
     { src = 'https://github.com/bluz71/vim-moonfly-colors' },
+    { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
     -- editor
     { src = 'https://github.com/neovim/nvim-lspconfig' },
+    -- navigation
+    { src = 'https://github.com/nvim-lua/plenary.nvim' },
+    { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+    { src = 'https://github.com/stevearc/oil.nvim' },
 })
 
 -- UI --
@@ -63,10 +73,19 @@ require("moonfly").custom_colors({
 vim.cmd("colorscheme moonfly")
 vim.cmd("hi statusline guibg=NONE")
 
--- LSP --
+-- editor --
+-- LSP
 vim.lsp.enable({
     'pyright',
     'lua_ls',
 })
 
+-- navigation --
+-- oil
+require("oil").setup()
 
+--telescope
+
+vim.keymap.set('n', '<leader>,', ':Telescope buffers <cr>', { desc = 'Buffer navigation like emacs' })
+
+-- TODO buffer navigation with telescope (emacs-like)

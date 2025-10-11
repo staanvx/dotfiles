@@ -1,16 +1,13 @@
 {
   "plugins": {
-    "nvim-lspconfig": {
-      "rev": "623bcf0",
-      "src": "https://github.com/neovim/nvim-lspconfig"
+    "nvim-lspconfig": [],
+    "nvim-web-devicons": [],
+    "oil.nvim": {
+      "rev": "919e155",
+      "src": "https://github.com/stevearc/oil.nvim"
     },
-    "onedarkpro.nvim": {
-      "rev": "eeac884",
-      "src": "https://github.com/olimorris/onedarkpro.nvim"
-    },
-    "vim-moonfly-colors": {
-      "rev": "343c731",
-      "src": "https://github.com/bluz71/vim-moonfly-colors"
-    }
+    "plenary.nvim": [],
+    "telescope.nvim": [],
+    "vim-moonfly-colors": []
   }
 }
