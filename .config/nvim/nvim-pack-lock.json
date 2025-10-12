@@ -1,6 +1,14 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "ddeab4c",
+      "src": "https://github.com/Saghen/blink.cmp"
+    },
     "nvim-lspconfig": [],
+    "nvim-treesitter": {
+      "rev": "42fc28ba",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "nvim-web-devicons": [],
     "oil.nvim": {
       "rev": "919e155",
