@@ -12,11 +12,12 @@ vim.o.signcolumn = "yes"
 vim.o.cursorline = false
 vim.o.showmatch = true
 vim.o.cmdheight = 1
+vim.opt.winborder = "single"
 
 -- tabs
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 vim.o.expandtab = true
 
 -- search
@@ -51,157 +52,189 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
 -- plugins --
 vim.pack.add({
-    -- UI
-    { src = 'https://github.com/bluz71/vim-moonfly-colors' },
-    { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
-    -- editor
-    { src = 'https://github.com/nvim-lua/plenary.nvim' },
-    { src = 'https://github.com/neovim/nvim-lspconfig' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
-    { src = 'https://github.com/Saghen/blink.cmp',               tag = 'v1.7.0' },
-    -- navigation
-    { src = 'https://github.com/nvim-telescope/telescope.nvim' },
-    { src = 'https://github.com/stevearc/oil.nvim' },
+  -- UI
+  { src = 'https://github.com/bluz71/vim-moonfly-colors' },
+  { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
+  -- editor
+  { src = 'https://github.com/nvim-lua/plenary.nvim' },
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+  { src = 'https://github.com/Saghen/blink.cmp',               tag = 'v1.7.0' },
+  { src = 'https://github.com/mason-org/mason.nvim' },
+  -- navigation
+  { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+  { src = 'https://github.com/stevearc/oil.nvim' },
 })
 
 -- UI --
 -- colorscheme
 require("moonfly").custom_colors({
-    bg = "#000000",
+  bg = "#000000",
 })
 
 vim.cmd("colorscheme moonfly")
 vim.cmd("hi statusline guibg=NONE")
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000", fg = "#36c692" })
+vim.api.nvim_set_hl(0, "FloatTitle", { bg = "NONE", fg = "#ff5189" })
 
 -- editor --
 -- blink.cmp (autocomplete)
 require("blink.cmp").setup({
-    keymap = { preset = 'default' },
+  keymap = {
+    preset = 'enter',
+    ['<C-e>'] = { 'hide', 'fallback' },
+    ['<CR>'] = { 'accept', 'fallback' },
+    ['<Tab>'] = { 'snippet_forward', 'fallback' },
+    ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+    ['<C-k>'] = { 'select_prev', 'fallback' },
+    ['<C-j>'] = { 'select_next', 'fallback' },
+    ['<C-l>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+  },
+  appearance = {
+    nerd_font_variant = 'mono',
+  },
 
-    appearance = {
-        nerd_font_variant = 'mono',
-    },
+  completion = {
+    documentation = { auto_show = true },
+  },
 
-    completion = {
-        documentation = { auto_show = true },
-    },
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+  },
 
-    sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-    fuzzy = {
-        implementation = "prefer_rust_with_warning",
-        prebuilt_binaries = { force_version = "v1.7.0" },
-    }
+  fuzzy = {
+    implementation = "prefer_rust_with_warning",
+    prebuilt_binaries = { force_version = "v1.7.0" },
+  }
 })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+-- Mason
+require("mason").setup()
+
 -- LSP
 vim.lsp.enable({
-    'pyright',
-    'lua_ls',
+  'pyright',
+  'lua_ls',
 })
 
 vim.lsp.config('lua_ls', {
-    capabilities = capabilities,
-    settings = {
-        Lua = { diagnostics = { globals = { 'vim' } } },
-    },
+  capabilities = capabilities,
+  settings = {
+    Lua = { diagnostics = { globals = { 'vim' } } },
+  },
 })
 
 vim.lsp.config('pyright', {
-    capabilities = capabilities,
+  capabilities = capabilities,
 })
 
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = true,
-    float = {
-        border = "rounded",
-        source = "always",
-    },
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "always",
+  },
 })
 
-vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Diagnostics (float)" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,  { desc = "Prev diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next,  { desc = "Next diagnostic" })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Float diagnostics" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
 -- navigation --
 -- oil
-function _G.get_oil_winbar()
-    local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
-    local dir = require("oil").get_current_dir(bufnr)
-    if dir then
-        return vim.fn.fnamemodify(dir, ":~")
-    else
-        return vim.api.nvim_buf_get_name(0)
-    end
-end
+local detail = false
 
 require("oil").setup({
-    default_file_explorer = true,
-    -- Id is automatically added at the beginning, and name at the end
-    -- See :help oil-columns
-    columns = {
-        "permissions",
-        "icon",
-        "size",
-        "mtime",
+  default_file_explorer = true,
+  delete_to_trash = true,
+  skip_confirm_for_simple_edits = true,
+
+  columns = {
+    "icon",
+  },
+
+  win_options = {
+    wrap = false,
+    signcolumn = "no",
+    colorcolumn = "0",
+  },
+
+  view_options = {
+    show_hidden = true,
+    is_always_hidden = function(name, _)
+      return name == ".." or name == ".git"
+    end,
+  },
+
+  keymaps = {
+    ["<C-p>"] = "actions.preview",
+    ["<leader>e"] = { "actions.close", mode = "n" },
+    ["<C-c>"] = "actions.refresh",
+    ["-"] = { "actions.parent", mode = "n" },
+    ["_"] = { "actions.open_cwd", mode = "n" },
+    ["g\\"] = { "actions.toggle_trash", mode = "n" },
+    ["gd"] = {
+      desc = "Toggle file detail view",
+      callback = function()
+        detail = not detail
+        if detail then
+          require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+        else
+          require("oil").set_columns({ "icon" })
+        end
+      end,
     },
-    buf_options = {
-        buflisted = false,
-        bufhidden = "hide",
-    },
-    win_options = {
-        wrap = false,
-        signcolumn = "no",
-        cursorcolumn = false,
-        colorcolumn = "0",
-        foldcolumn = "0",
-        spell = false,
-        list = false,
-        conceallevel = 3,
-        concealcursor = "nvic",
-        winbar = "%!v:lua.get_oil_winbar()",
-    },
-    view_options = {
-        -- Show files and directories that start with "."
-        show_hidden = true,
-        -- This function defines what is considered a "hidden" file
-        is_hidden_file = function(name, bufnr)
-            local m = name:match("^%.")
-            return m ~= nil
-        end,
-        -- This function defines what will never be shown, even when `show_hidden` is set
-        is_always_hidden = function(name, bufnr)
-            return false
-        end,
-        -- Sort file names with numbers in a more intuitive order for humans.
-        -- Can be "fast", true, or false. "fast" will turn it off for large directories.
-        natural_order = "fast",
-        -- Sort file and directory names case insensitive
-        case_insensitive = false,
-        sort = {
-            -- sort order can be "asc" or "desc"
-            -- see :help oil-columns to see which columns are sortable
-            { "type", "asc" },
-            { "name", "asc" },
-        },
-    },
+
+  },
+
+  float = {
+    padding = 2,
+    max_width = 0.8,
+    max_height = 0.8,
+    border = "single",
+    preview_split = "right",
+  }
 })
 
-vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 --telescope
 
+vim.keymap.set('n', '<leader>fh', ':Telescope help_tags <cr>', { desc = 'Help search' })
+
+local grp = vim.api.nvim_create_augroup("HelpToTab", { clear = true })
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = grp,
+  callback = function(args)
+    if vim.bo[args.buf].buftype == "help" then
+      vim.cmd("wincmd T")
+    end
+  end,
+})
+
 vim.keymap.set('n', '<leader>,', ':Telescope buffers <cr>', { desc = 'Buffer navigation like emacs' })
 
+-- float-terminal
+vim.keymap.set("n", "<leader>t", "<CMD>Floaterm<CR>", { desc = "Open float terminal" })
+
+
 -- TODO buffer navigation with telescope (emacs-like)
+-- TODO Telescope
+-- TODO Mason setup
+-- TODO nvim-treesitter
+-- TODO snippets
