@@ -1,5 +1,5 @@
 #theme = deep
-theme = 3024 Night
+#theme = 3024 Night
 #theme = Solarized Dark Higher Contrast
 window-colorspace = "display-p3"
 
@@ -15,19 +15,26 @@ macos-titlebar-style = tabs
 
 copy-on-select = clipboard
 
-palette = 0=#161616
-palette = 1=#ff7eb6
-palette = 2=#42be65
-palette = 3=#de935f
-palette = 4=#33b1ff
-palette = 5=#ee5396
-palette = 6=#3ddbd9
-palette = 7=#dde1e6
-palette = 8=#393939
-palette = 9=#ff7eb6
-palette = 10=#42be65
-palette = 11=#f0c674
-palette = 12=#33b1ff
-palette = 13=#ee5396
-palette = 14=#3ddbd9
-palette = 15=#ffffff
+background = #000000
+foreground = #bdbdbd
+selection-background = #b2ceee
+selection-foreground = #080808
+cursor-color = #8e8e8e
+
+palette = 0=#323437
+palette = 1=#ff5d5d
+palette = 2=#8cc85f
+palette = 3=#e3c78a
+palette = 4=#80a0ff
+palette = 5=#cf87e8
+palette = 6=#79dac8
+palette = 7=#c6c6c6
+
+palette = 8=#949494
+palette = 9=#ff5189
+palette = 10=#36c692
+palette = 11=#c6c684
+palette = 12=#74b2ff
+palette = 13=#ae81ff
+palette = 14=#85dc85
+palette = 15=#e4e4e4
