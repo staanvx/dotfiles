@@ -47,8 +47,6 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
-(package! org-roam)
-
 
 (package! beacon)
 
@@ -70,47 +68,13 @@
   ;; Corects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
-
-(package! doom-moonfly-theme
-  :recipe (:host github
-           :repo "stackmystack/doom-moonfly-theme"))
-
-
 (package! org-roam-ui)
-
-
-(package! nyan-mode)
-
-
-;;(package! cyberpunk-theme)
-
-
-(package! nyx-theme)
-
-
-(package! jupyter)
-
-
-(package! eldev)
-
-(package! blacken)
 
 (package! lsp-ui)
 
-(package! conda)
-
 (package! org-download)
-
-(package! gruber-darker-theme)
-
-(package! oxocarbon-emacs
-  :recipe (:host github :repo "shi7oID/oxocarbon-emacs"))
-
-(package! autothemer)
 
 (package! org-modern)
 
 (package! ef-themes)
 
-(package! typst-ts-mode :recipe (:host nil :repo "https://git.sr.ht/~meow_king/typst-ts-mode"))
-(package! treesit-auto)
