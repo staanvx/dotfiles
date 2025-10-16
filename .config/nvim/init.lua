@@ -6,7 +6,7 @@ vim.o.wrap = true
 vim.o.scrolloff = 8
 
 -- visual settings
-vim.o.termguicolors = true -- ????
+vim.o.termguicolors = true
 vim.o.colorcolumn = "110"
 vim.o.signcolumn = "yes"
 vim.o.cursorline = false
@@ -39,20 +39,36 @@ vim.o.selection = "inclusive"
 vim.o.encoding = "utf-8"
 vim.o.undofile = true
 
-vim.keymap.set('n', '<leader>o', ':update <cr> :so <cr>')
-vim.keymap.set('n', '<leader>w', ':write <cr>')
-vim.keymap.set('n', '<leader>q', ':quit <cr>')
+local map = vim.keymap.set
+
+map('n', '<leader>o', ':update <cr> :so <cr>')
+map('n', '<leader>w', ':write <cr>')
+map('n', '<leader>q', ':quit <cr>')
+
 
 -- navigation
 vim.opt.iskeyword:append("-")
 vim.opt.iskeyword:append("_")
 
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+-- terminal
+-- plugin/float-terminal
+map("n", "<leader><cr>", "<CMD>Floaterm<CR>", { desc = "Open float terminal" })
+
+map("t", "jk", "<c-\\><c-n>", { desc = "Escape from terminal-mode" })
+
+-- split-terminal at the bottom
+vim.keymap.set("n", "<leader>-", function()
+  vim.cmd.new()
+  vim.cmd.wincmd "J"
+  vim.api.nvim_win_set_height(0, 12)
+  vim.wo.winfixheight = true
+  vim.cmd.term()
+end)
 
 -- plugins --
 vim.pack.add({
@@ -62,12 +78,16 @@ vim.pack.add({
   -- editor
   { src = 'https://github.com/nvim-lua/plenary.nvim' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/folke/lazydev.nvim' },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
-  { src = 'https://github.com/Saghen/blink.cmp',               tag = 'v1.7.0' },
+  { src = 'https://github.com/Saghen/blink.cmp',                        tag = 'v1.7.0' },
   { src = 'https://github.com/mason-org/mason.nvim' },
+  { src = 'https://github.com/windwp/nvim-autopairs' },
   -- navigation
   { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+  { src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
   { src = 'https://github.com/stevearc/oil.nvim' },
+  { src = 'https://github.com/ibhagwan/fzf-lua' }
 })
 
 -- UI --
@@ -82,7 +102,12 @@ vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000", fg = "#36c692" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "NONE", fg = "#ff5189" })
 
+require('nvim-web-devicons').setup()
+
 -- editor --
+-- lazydev
+require('lazydev').setup()
+
 -- blink.cmp (autocomplete)
 require("blink.cmp").setup({
   keymap = {
@@ -106,7 +131,18 @@ require("blink.cmp").setup({
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+    per_filetype = {
+  --    sql = { 'dadbod' },
+      lua = { inherit_defaults = true, 'lazydev' }
+    },
+    providers = {
+   --   dadbod = { module = "vim_dadbod_completion.blink" },
+      lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+      },
+    },
   },
 
   fuzzy = {
@@ -114,6 +150,8 @@ require("blink.cmp").setup({
     prebuilt_binaries = { force_version = "v1.7.0" },
   }
 })
+
+require('nvim-autopairs').setup({ check_ts = true })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
@@ -137,7 +175,7 @@ vim.lsp.config('pyright', {
   capabilities = capabilities,
 })
 
-vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+map('n', '<leader>lf', vim.lsp.buf.format, { desc = "Lsp format current buffer" })
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -151,9 +189,9 @@ vim.diagnostic.config({
   },
 })
 
-vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Float diagnostics" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "gl", vim.diagnostic.open_float, { desc = "Float diagnostics" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
 -- navigation --
 -- oil
@@ -211,30 +249,108 @@ require("oil").setup({
   }
 })
 
-vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+map("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 --telescope
+local function to_normal_mode()
+  vim.cmd('stopinsert')
+end
 
-vim.keymap.set('n', '<leader>fh', ':Telescope help_tags <cr>', { desc = 'Help search' })
+require("telescope").setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = require('telescope.actions').move_selection_next,
+        ["<C-k>"] = require('telescope.actions').move_selection_previous,
+        ["<Esc>"] = require('telescope.actions').close,
+        ["jk"]    = to_normal_mode,
+      },
+    }
+  },
+  pickers = {
+    find_files = {
+    },
 
-local grp = vim.api.nvim_create_augroup("HelpToTab", { clear = true })
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = grp,
-  callback = function(args)
-    if vim.bo[args.buf].buftype == "help" then
-      vim.cmd("wincmd T")
-    end
-  end,
+    help_tags = {
+      theme = "dropdown",
+    },
+
+    treesitter = {
+      theme = "dropdown",
+    },
+
+    buffers = {
+      theme = "ivy",
+      sort_mru = true,
+      ignore_current_buffer = true,
+    },
+
+    live_grep = {
+      theme = "dropdown",
+    },
+  },
+
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "smart_case",
+    }
+  }
 })
 
-vim.keymap.set('n', '<leader>,', ':Telescope buffers <cr>', { desc = 'Buffer navigation like emacs' })
+require('telescope').load_extension('fzf')
 
--- float-terminal
-vim.keymap.set("n", "<leader>t", "<CMD>Floaterm<CR>", { desc = "Open float terminal" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000", fg = "#36c692" })
+vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5189" })
 
+local builtin = require('telescope.builtin')
 
--- TODO buffer navigation with telescope (emacs-like)
+map('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+map('n', '<leader>fr', builtin.oldfiles, { desc = 'Telescope previously open files' })
+map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+map('n', '<leader>fm', builtin.man_pages, { desc = 'Telescope manpage entries' })
+map('n', '<leader>tt', builtin.treesitter, { desc = 'Telescope with treesitter' })
+map('n', '<leader>,', builtin.buffers, { desc = 'Telescope buffers' })
+
+map('n', '<leader>fd', function()
+  builtin.find_files {
+    cwd = vim.fn.expand('~/.dotfiles/'),
+    hidden = true,
+    no_ignore = true,
+  }
+end, { desc = 'Telescope find config-files' })
+
+-- fzf-lua
+require('fzf-lua').setup({
+  winopts = {
+    height = 0.30,
+    width  = 1.00,
+    row    = 1.00,
+    col    = 0.50,
+    anchor = 'S',
+    border = 'rounded',
+  },
+
+  fzf_opts = {
+    ['--scheme'] = 'history',
+    ['--style']  = 'minimal',
+    ['--layout'] = 'default',
+    ['--info']   = 'inline-right',
+    ['--prompt'] = '>>> ',
+  },
+})
+
+map('n', '<leader>f;', "<CMD>FzfLua commands<CR>", { desc = 'Fzf command list' })
+map('n', '<leader>.', "<CMD>FzfLua tabs<CR>", { desc = 'Fzf command list' })
+
+-- other --
+
 -- TODO Telescope
--- TODO Mason setup
+--   TODO ui-select
 -- TODO nvim-treesitter
 -- TODO snippets
+-- TODO tab navigation
+-- TODO sql

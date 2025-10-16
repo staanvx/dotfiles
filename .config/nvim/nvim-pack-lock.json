@@ -4,9 +4,21 @@
       "rev": "ddeab4c",
       "src": "https://github.com/Saghen/blink.cmp"
     },
+    "fzf-lua": {
+      "rev": "83e4080",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "lazydev.nvim": {
+      "rev": "e28ce52",
+      "src": "https://github.com/folke/lazydev.nvim"
+    },
     "mason.nvim": {
       "rev": "ad7146a",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "nvim-autopairs": {
+      "rev": "7a2c97c",
+      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-lspconfig": [],
     "nvim-treesitter": {
@@ -19,6 +31,10 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": [],
+    "telescope-fzf-native.nvim": {
+      "rev": "1f08ed6",
+      "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+    },
     "telescope.nvim": [],
     "vim-moonfly-colors": []
   }
