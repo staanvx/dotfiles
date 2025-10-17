@@ -14,6 +14,8 @@ vim.o.showmatch = true
 vim.o.cmdheight = 1
 vim.opt.winborder = "single"
 
+vim.g.have_nerd_font = true
+
 -- tabs
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
@@ -38,6 +40,13 @@ vim.o.mouse = "a"
 vim.o.selection = "inclusive"
 vim.o.encoding = "utf-8"
 vim.o.undofile = true
+vim.o.breakindent = true
+vim.o.inccommand = 'split'
+
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+vim.o.confirm = true
 
 local map = vim.keymap.set
 
@@ -45,10 +54,11 @@ map('n', '<leader>o', ':update <cr> :so <cr>')
 map('n', '<leader>w', ':write <cr>')
 map('n', '<leader>q', ':quit <cr>')
 
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- navigation
-vim.opt.iskeyword:append("-")
-vim.opt.iskeyword:append("_")
+vim.cmd("set iskeyword+=-")
+vim.cmd("set iskeyword+=_")
 
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -62,7 +72,7 @@ map("n", "<leader><cr>", "<CMD>Floaterm<CR>", { desc = "Open float terminal" })
 map("t", "jk", "<c-\\><c-n>", { desc = "Escape from terminal-mode" })
 
 -- split-terminal at the bottom
-vim.keymap.set("n", "<leader>-", function()
+map("n", "<leader>-", function()
   vim.cmd.new()
   vim.cmd.wincmd "J"
   vim.api.nvim_win_set_height(0, 12)
@@ -86,8 +96,10 @@ vim.pack.add({
   -- navigation
   { src = 'https://github.com/nvim-telescope/telescope.nvim' },
   { src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
+  { src = 'https://github.com/nvim-telescope/telescope-ui-select.nvim' },
   { src = 'https://github.com/stevearc/oil.nvim' },
-  { src = 'https://github.com/ibhagwan/fzf-lua' }
+  { src = 'https://github.com/ibhagwan/fzf-lua' },
+  { src = 'https://github.com/folke/which-key.nvim' },
 })
 
 -- UI --
@@ -133,11 +145,11 @@ require("blink.cmp").setup({
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
     per_filetype = {
-  --    sql = { 'dadbod' },
+      --    sql = { 'dadbod' },
       lua = { inherit_defaults = true, 'lazydev' }
     },
     providers = {
-   --   dadbod = { module = "vim_dadbod_completion.blink" },
+      --   dadbod = { module = "vim_dadbod_completion.blink" },
       lazydev = {
         name = "LazyDev",
         module = "lazydev.integrations.blink",
@@ -177,21 +189,33 @@ vim.lsp.config('pyright', {
 
 map('n', '<leader>lf', vim.lsp.buf.format, { desc = "Lsp format current buffer" })
 
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
+-- Diagnostic Config
+vim.diagnostic.config {
   severity_sort = true,
-  float = {
-    border = "rounded",
-    source = "always",
+  float = { border = 'rounded', source = true },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  virtual_text = {
+    source = 'if_many',
+    spacing = 2,
+    format = function(diagnostic)
+      local diagnostic_message = {
+        [vim.diagnostic.severity.ERROR] = diagnostic.message,
+        [vim.diagnostic.severity.WARN] = diagnostic.message,
+        [vim.diagnostic.severity.INFO] = diagnostic.message,
+        [vim.diagnostic.severity.HINT] = diagnostic.message,
+      }
+      return diagnostic_message[diagnostic.severity]
+    end,
   },
-})
+}
 
-map("n", "gl", vim.diagnostic.open_float, { desc = "Float diagnostics" })
+map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Float diagnostics" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+
+map('n', '<leader>da', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "LSP code actions" })
 
 -- navigation --
 -- oil
@@ -296,15 +320,21 @@ require("telescope").setup({
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case",
-    }
+    },
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown({
+        previewer = false,
+        initial_mode = 'normal',
+      }),
+    },
   }
 })
 
 require('telescope').load_extension('fzf')
+require("telescope").load_extension("ui-select")
 
 vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000", fg = "#36c692" })
 vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5189" })
-
 local builtin = require('telescope.builtin')
 
 map('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
@@ -313,7 +343,7 @@ map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 map('n', '<leader>fm', builtin.man_pages, { desc = 'Telescope manpage entries' })
 map('n', '<leader>tt', builtin.treesitter, { desc = 'Telescope with treesitter' })
-map('n', '<leader>,', builtin.buffers, { desc = 'Telescope buffers' })
+map('n', '<leader>r', builtin.buffers, { desc = 'Telescope buffers' })
 
 map('n', '<leader>fd', function()
   builtin.find_files {
@@ -322,6 +352,9 @@ map('n', '<leader>fd', function()
     no_ignore = true,
   }
 end, { desc = 'Telescope find config-files' })
+
+map('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 
 -- fzf-lua
 require('fzf-lua').setup({
@@ -346,11 +379,27 @@ require('fzf-lua').setup({
 map('n', '<leader>f;', "<CMD>FzfLua commands<CR>", { desc = 'Fzf command list' })
 map('n', '<leader>.', "<CMD>FzfLua tabs<CR>", { desc = 'Fzf command list' })
 
--- other --
+-- Keymaps --
 
--- TODO Telescope
---   TODO ui-select
+
+-- which-key
+require("which-key").setup()
+
+-- other --
+-- Highlight when yanking (copying) text (from kickstart.nvim)
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
 -- TODO nvim-treesitter
 -- TODO snippets
 -- TODO tab navigation
 -- TODO sql
+-- TODO typst
+-- TODO jupyter
+-- TODO org???
+-- TODO which-key
