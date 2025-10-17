@@ -69,11 +69,11 @@
   (doom-themes-org-config))
 
 (package! org-roam-ui)
-
-(package! lsp-ui)
-
+(package! org-super-agenda)
+(package! org-ql)
+(package! org-cliplink)
 (package! org-download)
-
+(package! org-download)
 (package! org-modern)
 
 (package! ef-themes)

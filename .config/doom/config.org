@@ -3,7 +3,8 @@
 * General
 
 #+begin_src emacs-lisp
-(setq user-full-name "Matthew")
+(setq user-full-name "Matthew"
+      user-mail-address "indetermattrix@gmail.com")
 #+end_src
 
 Выключение подтверждения выхода из emacs:
@@ -71,15 +72,19 @@
 
 Директория с org-файлами:
 #+begin_src emacs-lisp
-(setq org-directory "~/orgfiles/")
+(setq org-directory       "~/orgfiles/"
+      org-roam-directory  "~/orgfiles/")
+
+(org-roam-db-autosync-mode 1)
 #+end_src
 
 Файлы для org-agenda:
 #+begin_src emacs-lisp
-(after! org
-  (setq org-agenda-files
-        '("~/orgfiles/")))
-  (setq org-agenda-skip-unavailable-files t)
+(setq org-agenda-files
+      (append (directory-files-recursively
+               (expand-file-name "tasks" org-roam-directory) "\\.org$")
+              (list (expand-file-name "inbox.org" org-roam-directory)
+                    (expand-file-name "calendar/calendar.org" org-roam-directory))))
 #+end_src
 
 Пропорциональный шрифт для заголовков:
@@ -120,24 +125,14 @@
 ** Org-roam
 
 #+begin_src emacs-lisp
-(use-package org-roam
-  :ensure t
+(use-package! org-roam
   :custom
-  (org-roam-directory (file-truename "~/orgfiles/"))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
+  (org-roam-completion-everywhere t)
   :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
-#+end_src
+  (setq org-roam-node-display-template
+        (concat "${title:*} "
+                (propertize "${tags:20}" 'face 'org-tag))))
+ #+end_src
 
 #+begin_src emacs-lisp
 (use-package org-roam-ui
@@ -150,7 +145,89 @@
         org-roam-ui-open-on-start t))
 #+end_src
 
-* Packages
+Шаблоны для задач или событий
+#+begin_src emacs-lisp
+(setq org-capture-templates
+        ;; инбокс
+      '(("i" "Inbox" entry (file "~/orgfiles/inbox.org")
+         "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
+        ;; задачи
+        ("t" "Task" entry (file "~/orgfiles/tasks/tasks.org")
+         "* TODO %?\nSCHEDULED: %^t\n:PROPERTIES:\n:CREATED: %U\n:CONTEXT: %^{context|dev|study|life|work}\n:END:\n")
+        ;; события
+        ("e" "Event" entry (file "~/orgfiles/calendar/calendar.org")
+         "* %? \n<%^t>\n:PROPERTIES:\n:LOCATION: %^{location}\n:END:\n")))
+#+end_src
+
+Шаблоны для заметок:
+#+begin_src emacs-lisp
+(setq org-roam-capture-templates
+      '(
+        ;; Общие заметки
+        ("n" "Note" plain "%?"
+         :target (file+head "notes/${slug}.org"
+                            "#+title: ${title}\n#+filetags: :note:\n")
+         :unnarrowed t)
+
+        ;; Книги
+        ("b" "Book" plain
+         "* Summary\n%?\n* Цитаты\n"
+         :target (file+head "books/${slug}.org"
+                            "#+title: ${title}\n#+filetags: :book:\n")
+         :unnarrowed t)
+
+        ;; Фильмы
+        ("mf" "media - Film" plain
+         "* Review\n%?\n"
+         :target (file+head "media/films/${slug}.org"
+                            "#+title: ${title}\n#+filetags: :media:film:\n")
+         :unnarrowed t)
+
+        ;; игры
+        ("mg" "media - game" plain
+         "* review\n%?\n"
+         :target (file+head "media/games/${slug}.org"
+                            "#+title: ${title}\n#+filetags: :media:game:\n")
+         :unnarrowed t)
+
+        ;; музыка
+        ("mm" "media - music" plain
+         "* review\n%?\n"
+         :target (file+head "media/music/${slug}.org"
+                            "#+title: ${title}\n#+filetags: :media:music:\n")
+         :unnarrowed t)
+        
+        ;; Технические заметки
+        ("t" "Tech note" plain
+         "* Context\n%?\n"
+         :target (file+head "tech/${slug}.org"
+                            "#+title: ${title}\n#+filetags: :tech:\n")
+         :unnarrowed t)
+        ))
+#+end_src
+
+Дополнительные плагины
+#+begin_src emacs-lisp
+;; улучшение интерфейса для заметок
+(use-package! org-modern :hook (org-mode . org-modern-mode))
+
+;; удобное сохранение изображений
+(use-package! org-download
+  :after org
+  :config
+  (setq org-download-method 'attach
+        org-download-image-dir "images"
+        org-download-heading-lvl 0))
+
+;; удобное вставка ссылок
+(use-package! org-cliplink :after org)
+
+;; улучшенное отображение agenda
+(use-package! org-super-agenda
+  :after org-agenda
+  :config (org-super-agenda-mode 1))
+#+end_src
+* Other packages
 ** Beacon
 
 #+begin_src emacs-lisp
