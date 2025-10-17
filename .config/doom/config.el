@@ -104,25 +104,25 @@
 
         ;; Книги
         ("b" "Book" plain
-         "* Summary\n%?\n* Цитаты\n"
-         :target (file+head "books/${slug}.org"
-                            "#+title: ${title}\n#+filetags: :book:\n")
-         :unnarrowed t)
+          "* Summary\n%?\n"
+          :target (file+head "books/%<%Y-%m-%d>-${slug}.org"
+                             "#+title: ${title}\n#+filetags: :book:\n:PROPERTIES:\n:AUTHOR: %^{Author}\n:PAGES: %^{Pages|0}\n:STARTED: %U\n:FINISHED:\n:RATING: %^{Rating|0|1|2|3|4|5|6|7|8|9|10}\n:STATUS: %^{Status|to-read|reading|finished|abandoned|on-hold}\n:END:\n\n* Notes\n")
+          :unnarrowed t)
 
         ;; Фильмы
         ("mf" "media - Film" plain
-         "* Review\n%?\n"
-         :target (file+head "media/films/${slug}.org"
-                            "#+title: ${title}\n#+filetags: :media:film:\n")
-         :unnarrowed t)
-
+          "* Review\n%?\n"
+          :target (file+head "media/films/%<%Y-%m-%d>-${slug}.org"
+                             "#+title: ${title}\n#+filetags: :media:film:\n:PROPERTIES:\n:YEAR: %^{Year|}\n:RUNTIME: %^{Runtime(min)|}\n:DATE: %U\n:RATING: %^{Rating|0|1|2|3|4|5|6|7|8|9|10}\n:STATUS: %^{Status|watchlist|watching|watched|dropped}\n:END:\n\n* Notes\n")
+          :unnarrowed t)
+        
         ;; игры
-        ("mg" "media - game" plain
-         "* review\n%?\n"
-         :target (file+head "media/games/${slug}.org"
-                            "#+title: ${title}\n#+filetags: :media:game:\n")
-         :unnarrowed t)
-
+        ("mg" "media - Game" plain
+          "* Review\n%?\n"
+          :target (file+head "media/games/%<%Y-%m-%d>-${slug}.org"
+                             "#+title: ${title}\n#+filetags: :media:game:\n:PROPERTIES:\n:PLATFORM: %^{Platform|PC|PS|Switch|Xbox|Mobile|Other}\n:HOURS: %^{Hours|0}\n:STARTED: %U\n:FINISHED:\n:RATING: %^{Rating|0|1|2|3|4|5|6|7|8|9|10}\n:STATUS: %^{Status|backlog|playing|finished|abandoned}\n:END:\n\n* Notes\n")
+          :unnarrowed t)
+        
         ;; музыка
         ("mm" "media - music" plain
          "* review\n%?\n"
