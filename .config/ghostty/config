@@ -2,6 +2,7 @@
 #theme = 3024 Night
 #theme = Solarized Dark Higher Contrast
 window-colorspace = "display-p3"
+window-decoration = false
 
 font-family = Hack Nerd Font Mono
 font-size = 20
