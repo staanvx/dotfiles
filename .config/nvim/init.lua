@@ -14,6 +14,7 @@ vim.o.showmatch = true
 vim.o.cmdheight = 1
 vim.opt.winborder = "single"
 
+vim.o.wrap = false
 vim.g.have_nerd_font = true
 
 -- tabs
@@ -174,6 +175,8 @@ require("mason").setup()
 vim.lsp.enable({
   'pyright',
   'lua_ls',
+  'sqls',
+  'tinymist'
 })
 
 vim.lsp.config('lua_ls', {
@@ -187,7 +190,52 @@ vim.lsp.config('pyright', {
   capabilities = capabilities,
 })
 
+vim.lsp.config("sqls", {
+  cmd = { "sqls" },
+  filetypes = { "sql" },
+  root_markers = { ".git/" },
+  capabilities = capabilities,
+  settings = {
+    sqls = {
+      connections = {
+        {
+          driver = "postgresql",
+          dataSourceName =
+          "host=127.0.0.1 port=5432 user=stan dbname=lab_2 sslmode=disable options='-c search_path=lab2,lab1,public'",
+        },
+      },
+    },
+  },
+})
+
+-- typst
+vim.lsp.config["tinymist"] = {
+  cmd = { "tinymist" },
+  filetypes = { "typst" },
+  capabilities = capabilities,
+  root_markers = { '.git' },
+  settings = {
+    formatterMode = "typstyle",
+    exportPdf = "onType",
+    semanticTokens = "disable"
+  }
+}
+
+vim.api.nvim_create_user_command("OpenPdf", function()
+  local filepath = vim.api.nvim_buf_get_name(0)
+  if filepath:match("%.typ$") then
+    local pdf_path = filepath:gsub("%.typ$", ".pdf")
+    vim.system({ "zathura", pdf_path })
+  end
+end, {})
+
 map('n', '<leader>lf', vim.lsp.buf.format, { desc = "Lsp format current buffer" })
+
+-- treesitter
+require('nvim-treesitter.configs').setup({
+  ensure_installed = { "lua", "python", "typst" },
+  highlight = { enable = true },
+})
 
 -- Diagnostic Config
 vim.diagnostic.config {
@@ -210,10 +258,14 @@ vim.diagnostic.config {
 }
 
 map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Float diagnostics" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
-map('n', '<leader>da', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end,
+  { desc = "Prev diagnostic" })
+
+map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end,
+  { desc = "Next diagnostic" })
+
+map('n', '<leader>da', vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "LSP code actions" })
 
@@ -343,7 +395,9 @@ map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 map('n', '<leader>fm', builtin.man_pages, { desc = 'Telescope manpage entries' })
 map('n', '<leader>tt', builtin.treesitter, { desc = 'Telescope with treesitter' })
-map('n', '<leader>r', builtin.buffers, { desc = 'Telescope buffers' })
+map('n', '<leader>k', builtin.buffers, { desc = 'Telescope buffers' })
+
+
 
 map('n', '<leader>fd', function()
   builtin.find_files {
@@ -377,7 +431,6 @@ require('fzf-lua').setup({
 })
 
 map('n', '<leader>f;', "<CMD>FzfLua commands<CR>", { desc = 'Fzf command list' })
-map('n', '<leader>.', "<CMD>FzfLua tabs<CR>", { desc = 'Fzf command list' })
 
 -- Keymaps --
 
@@ -403,3 +456,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- TODO jupyter
 -- TODO org???
 -- TODO which-key
+-- TODO separate config?

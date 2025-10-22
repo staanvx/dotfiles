@@ -1,0 +1,4 @@
+set window-title-basename true
+set font "GohuFont uni14 Nerd Font 14"
+set selection-clipboard clipboard
+set recolor true
