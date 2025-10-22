@@ -1,8 +1,8 @@
 sw_volume: 100
 audio_device_state:1:CoreAudio
 state: pause
-current: 1
-time: 9.448
+current: 14
+time: 123.485
 random: 0
 repeat: 0
 single: 0
@@ -13,37 +13,30 @@ mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
 0:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/01 - World In My Eyes.flac
-1:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/09 - Clean.flac
-2:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/10 - Dangerous.flac
-3:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/11 - Memphisto.flac
-4:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/12 - Sibeling.flac
-5:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/13 - Kaleid (7'' Version).flac
-6:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/14 - Happiest Girl (Jack Mix).flac
-7:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/15 - Sea of Sin (Tonal Mix).flac
-8:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/03 - Personal Jesus.flac
-9:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/06 - Enjoy the Silence.flac
-10:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/07 - Policy of Truth.flac
-11:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/08 - Blue Dress.flac
-12:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/09 - Clean.flac
-13:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/10 - Dangerous.flac
-14:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/11 - Memphisto.flac
-15:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/12 - Sibeling.flac
-16:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/13 - Kaleid (7'' Version).flac
-17:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/14 - Happiest Girl (Jack Mix).flac
-18:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/15 - Sea of Sin (Tonal Mix).flac
-19:Metox/2024-05-03 - Полночь трудного дня/07. Metox - Сталинская высотка.mp3
-20:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
-21:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
-22:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
-23:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
-24:Nirvana/1991 - Nevermind/Nirvana - Nevermind.cue/track0013
-25:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/01 - Щекотно.mp3
-26:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/02 - Мотоциклетка.mp3
-27:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/03 - Его там не было.mp3
-28:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/04 - Эпидемия.mp3
-29:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/05 - Беглец.mp3
-30:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/06 - Шпала.mp3
-31:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/07 - Декаданс.mp3
-32:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/08 - Эксперимент.mp3
-33:Orphan_Loops/2018 - Ours Samplus - Orphan Loops/01. Alignement planétaire.mp3
+1:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/15 - Sea of Sin (Tonal Mix).flac
+2:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/03 - Personal Jesus.flac
+3:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/06 - Enjoy the Silence.flac
+4:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/07 - Policy of Truth.flac
+5:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/08 - Blue Dress.flac
+6:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/09 - Clean.flac
+7:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/10 - Dangerous.flac
+8:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/11 - Memphisto.flac
+9:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/12 - Sibeling.flac
+10:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/13 - Kaleid (7'' Version).flac
+11:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/14 - Happiest Girl (Jack Mix).flac
+12:Depeche_mode/Depeche Mode - 1990 - Violator [Deluxe] (16bit-44.1kHz)/15 - Sea of Sin (Tonal Mix).flac
+13:Metox/2024-05-03 - Полночь трудного дня/07. Metox - Сталинская высотка.mp3
+14:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
+15:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
+16:Metox/2024-05-03 - Полночь трудного дня/05. Metox - Лишь бы вставило.mp3
+17:Nirvana/1991 - Nevermind/Nirvana - Nevermind.cue/track0013
+18:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/01 - Щекотно.mp3
+19:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/02 - Мотоциклетка.mp3
+20:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/03 - Его там не было.mp3
+21:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/04 - Эпидемия.mp3
+22:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/05 - Беглец.mp3
+23:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/06 - Шпала.mp3
+24:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/07 - Декаданс.mp3
+25:Агата_Кристи/1990 - Декаданс (2008 Переиздание)/08 - Эксперимент.mp3
+26:Orphan_Loops/2018 - Ours Samplus - Orphan Loops/01. Alignement planétaire.mp3
 playlist_end
