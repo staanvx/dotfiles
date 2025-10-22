@@ -3,7 +3,7 @@
 
 (setq confirm-kill-emacs nil)
 
-;;(add-to-list 'default-frame-alist '(undecorated-round t))
+(add-to-list 'default-frame-alist '(undecorated . t))
 
 (menu-bar-mode -1)
 
@@ -17,7 +17,7 @@
 
 (blink-cursor-mode 1)
 
-(setq doom-theme 'ef-dark)
+(setq doom-theme 'doom-moonlight)
 
 ;; Отключить нижний разделитель
 (setq window-divider-default-bottom-width 0)
@@ -133,7 +133,7 @@
         ;; Технические заметки
         ("t" "Tech note" plain
          "* Context\n%?\n"
-         :target (file+head "tech/${slug}.org"
+         :target (file+head "tech-roam/${slug}.org"
                             "#+title: ${title}\n#+filetags: :tech:\n")
          :unnarrowed t)
         ))
@@ -158,13 +158,3 @@
   :config (org-super-agenda-mode 1))
 
 (beacon-mode 1)
-
-(use-package pdf-tools
-  :defer t
-  :commands (pdf-loader-install)
-  :mode "\\.pdf\\'"
-  :bind (:map pdf-view-mode-map
-              ("j" . pdf-view-next-line-or-next-page)
-              ("k" . pdf-view-previous-line-or-previous-page))
-  :init (pdf-loader-install)
-  :config (add-to-list 'revert-without-query ".pdf"))

@@ -5,7 +5,13 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
-   '("21d2bf8d4d1df4859ff94422b5e41f6f2eeff14dd12f01428fa3cb4cb50ea0fb" "014cb63097fc7dbda3edf53eb09802237961cbb4c9e9abd705f23b86511b0a69" "a1c18db2838b593fba371cb2623abd8f7644a7811ac53c6530eebdf8b9a25a8d" "4ade6b630ba8cbab10703b27fd05bb43aaf8a3e5ba8c2dc1ea4a2de5f8d45882" "dfb1c8b5bfa040b042b4ef660d0aab48ef2e89ee719a1f24a4629a0c5ed769e8" default))
+   '("8aaf3bebf4a27e3b1114362a8a5e292ddc7dcd4b651fd75c2e5140e3bec11f85"
+     "41c76ba971c6eb574a914f70358e2674a59236a508aa0174dde1c8158252b449"
+     "21d2bf8d4d1df4859ff94422b5e41f6f2eeff14dd12f01428fa3cb4cb50ea0fb"
+     "014cb63097fc7dbda3edf53eb09802237961cbb4c9e9abd705f23b86511b0a69"
+     "a1c18db2838b593fba371cb2623abd8f7644a7811ac53c6530eebdf8b9a25a8d"
+     "4ade6b630ba8cbab10703b27fd05bb43aaf8a3e5ba8c2dc1ea4a2de5f8d45882"
+     "dfb1c8b5bfa040b042b4ef660d0aab48ef2e89ee719a1f24a4629a0c5ed769e8" default))
  '(package-selected-packages '(visual-fill-column rainbow-identifiers zmq doom-themes)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
