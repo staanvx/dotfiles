@@ -4,8 +4,8 @@
 window-colorspace = "display-p3"
 window-decoration = false
 
-font-family = Hack Nerd Font Mono
-font-size = 20
+font-family = GohuFont 14 Nerd Font Mono
+font-size = 22
 #background = 000000
 cursor-style = block
 
