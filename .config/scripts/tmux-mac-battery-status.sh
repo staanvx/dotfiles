@@ -1,12 +1,12 @@
 #!/bin/bash
 
 CLR_5="#85dc85"
-CLR_4="#c6c684"
+CLR_4="#85dc85"
 CLR_3="#e3c78a"
-CLR_2="#ffcc66"
+CLR_2="#ff5d5d"
 CLR_1="#ff5d5d"
-CLR_AC="#80a0ff"
-CLR_CHRG="#36c692"
+CLR_AC="#85dc85"
+CLR_CHRG="#85dc85"
 
 ICON_8=" "
 ICON_7=" "
