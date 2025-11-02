@@ -45,6 +45,10 @@
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     },
     "vim-moonfly-colors": [],
+    "vim-nightfly-colors": {
+      "rev": "2a92a92",
+      "src": "https://github.com/bluz71/vim-nightfly-colors"
+    },
     "which-key.nvim": {
       "rev": "b4177e3",
       "src": "https://github.com/folke/which-key.nvim"

@@ -85,6 +85,7 @@ end)
 vim.pack.add({
   -- UI
   { src = 'https://github.com/bluz71/vim-moonfly-colors' },
+  { src = 'https://github.com/bluz71/vim-nightfly-colors' },
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   -- editor
   { src = 'https://github.com/nvim-lua/plenary.nvim' },
@@ -110,11 +111,18 @@ require("moonfly").custom_colors({
   bg = "#000000",
 })
 
-vim.cmd("colorscheme moonfly")
-vim.cmd("hi statusline guibg=NONE")
+vim.cmd("colorscheme nightfly")
+-- moonfly
+--vim.cmd("hi statusline guibg=NONE")
+--vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+--vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000", fg = "#36c692" })
+--vim.api.nvim_set_hl(0, "FloatTitle", { bg = "NONE", fg = "#ff5189" })
+
+-- nightfly
+--vim.cmd("hi statusline guibg=NONE")
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000", fg = "#36c692" })
-vim.api.nvim_set_hl(0, "FloatTitle", { bg = "NONE", fg = "#ff5189" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#011627", fg = "#21c7a8" })
+vim.api.nvim_set_hl(0, "FloatTitle", { bg = "NONE", fg = "#ff5874" })
 
 -- transparrent
 --vim.cmd [[
@@ -398,8 +406,14 @@ require("telescope").setup({
 require('telescope').load_extension('fzf')
 require("telescope").load_extension("ui-select")
 
+-- moonfly (black)
 vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000", fg = "#36c692" })
 vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5189" })
+
+-- nightfly
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#011627", fg = "#21c7a8" })
+vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5874" })
+
 local builtin = require('telescope.builtin')
 
 map('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
@@ -468,3 +482,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- TODO org???
 -- TODO which-key
 -- TODO separate config?
+-- https://github.com/bluz71/nvim-linefly
+-- https://github.com/sindresorhus/pure
