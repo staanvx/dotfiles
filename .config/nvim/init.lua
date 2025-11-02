@@ -101,6 +101,7 @@ vim.pack.add({
   { src = 'https://github.com/stevearc/oil.nvim' },
   { src = 'https://github.com/ibhagwan/fzf-lua' },
   { src = 'https://github.com/folke/which-key.nvim' },
+  { src = 'https://github.com/chomosuke/typst-preview.nvim' }
 })
 
 -- UI --
@@ -114,6 +115,16 @@ vim.cmd("hi statusline guibg=NONE")
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000", fg = "#36c692" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "NONE", fg = "#ff5189" })
+
+-- transparrent
+--vim.cmd [[
+--  hi Normal guibg=NONE ctermbg=NONE
+--  hi NormalNC guibg=NONE ctermbg=NONE
+--  hi NormalFloat guibg=NONE ctermbg=NONE
+--  hi SignColumn guibg=NONE ctermbg=NONE
+--  hi LineNr guibg=NONE ctermbg=NONE
+--  hi EndOfBuffer guibg=NONE ctermbg=NONE
+--]]
 
 require('nvim-web-devicons').setup()
 
@@ -220,6 +231,8 @@ vim.lsp.config["tinymist"] = {
     semanticTokens = "disable"
   }
 }
+
+require('typst-preview').setup()
 
 vim.api.nvim_create_user_command("OpenPdf", function()
   local filepath = vim.api.nvim_buf_get_name(0)
@@ -396,8 +409,6 @@ map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 map('n', '<leader>fm', builtin.man_pages, { desc = 'Telescope manpage entries' })
 map('n', '<leader>tt', builtin.treesitter, { desc = 'Telescope with treesitter' })
 map('n', '<leader>k', builtin.buffers, { desc = 'Telescope buffers' })
-
-
 
 map('n', '<leader>fd', function()
   builtin.find_files {

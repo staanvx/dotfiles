@@ -1,20 +1,26 @@
 #theme = deep
 #theme = 3024 Night
 #theme = Solarized Dark Higher Contrast
+#
 window-colorspace = "display-p3"
 window-decoration = false
+window-padding-balance = true
+window-save-state = always
 
-font-family = GohuFont 14 Nerd Font Mono
-font-size = 22
+font-family = Hack Nerd Font Mono
+font-size = 20
 #background = 000000
+shell-integration-features = no-cursor
 cursor-style = block
 
-window-padding-x = 1
-window-padding-y = 1 
+window-padding-x = 5
+window-padding-y = 0 
 
 macos-titlebar-style = tabs
 
 copy-on-select = clipboard
+
+keybind = global:cmd+backquote=toggle_quick_terminal
 
 background = #000000
 foreground = #bdbdbd

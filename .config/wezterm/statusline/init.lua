@@ -12,7 +12,7 @@ local M        = {}
 function M.setup()
   wezterm.on('update-right-status', function(window, pane)
     local workspace = window:active_workspace() or "default"
-    local date = wezterm.strftime '%Y-%m-%d %H:%M '
+    local date = wezterm.strftime '%H:%M '
     local batt = battery.get()
     local cpu_text = cpu.get({
       throttle = 5,
