@@ -86,7 +86,23 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
-export COLORTERM=truecolor
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --color bg:#011627 \
+  --color bg+:#0e293f \
+  --color border:#2c3043 \
+  --color fg:#acb4c2 \
+  --color fg+:#d6deeb \
+  --color gutter:#0e293f \
+  --color header:#82aaff \
+  --color hl+:#f78c6c \
+  --color hl:#f78c6c \
+  --color info:#ecc48d \
+  --color marker:#f78c6c \
+  --color pointer:#ff5874 \
+  --color prompt:#82aaff \
+  --color spinner:#21c7a8
+"
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
