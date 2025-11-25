@@ -1,47 +1,38 @@
-#theme = deep
-#theme = 3024 Night
 #theme = Solarized Dark Higher Contrast
-#
+#theme = Builtin Pastel Dark
+#theme = Duckbones
+#theme = Ayu
+theme = Catppuccin Mocha
+#config-file = ~/.config/ghostty/themes/nightfly
+#config-file = ~/.config/ghostty/themes/mayhem
+background-opacity = 0.9
+#background = #0b0e14
+
 window-colorspace = "display-p3"
-window-decoration = false
+#window-decoration = false
 window-padding-balance = true
 window-save-state = always
+#window-padding-color = extend
 
 font-family = Hack Nerd Font Mono
 font-size = 20
-#background = 000000
+
 shell-integration-features = no-cursor
 cursor-style = block
 
-window-padding-x = 5
+window-padding-x = 2
 window-padding-y = 0 
 
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 
 copy-on-select = clipboard
 
+#quick-terminal-animation-duration = 0
+quick-terminal-screen = macos-menu-bar 
+
 keybind = global:cmd+backquote=toggle_quick_terminal
 
-background = #000000
-foreground = #bdbdbd
-selection-background = #b2ceee
-selection-foreground = #080808
-cursor-color = #8e8e8e
-
-palette = 0=#323437
-palette = 1=#ff5d5d
-palette = 2=#8cc85f
-palette = 3=#e3c78a
-palette = 4=#80a0ff
-palette = 5=#cf87e8
-palette = 6=#79dac8
-palette = 7=#c6c6c6
-
-palette = 8=#949494
-palette = 9=#ff5189
-palette = 10=#36c692
-palette = 11=#c6c684
-palette = 12=#74b2ff
-palette = 13=#ae81ff
-palette = 14=#85dc85
-palette = 15=#e4e4e4
+macos-icon = custom-style
+macos-icon-frame = chrome
+macos-window-shadow = false
+macos-option-as-alt = true
