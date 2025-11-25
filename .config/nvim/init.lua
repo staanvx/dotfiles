@@ -10,7 +10,8 @@ vim.lsp.enable({
   'pyright',
   'lua_ls',
   'sqls',
-  'tinymist'
+  'tinymist',
+  'zls'
 })
 
 vim.lsp.config('lua_ls', {
@@ -52,6 +53,23 @@ vim.lsp.config["tinymist"] = {
     formatterMode = "typstyle",
     exportPdf = "onType",
     semanticTokens = "disable"
+  }
+}
+
+vim.lsp.config["zls"] = {
+  cmd = { "zls" },
+  filetypes = { "zig" },
+  root_markers = { ".git", "build.zig", "zig.build.zig" },
+
+  capabilities = capabilities,
+
+  settings = {
+    zig = {
+      zig_exe_path = "/opt/homebrew/bin/zig", -- важно для mac m1 + brew
+      enable_inlay_hints = true,
+      enable_snippets = true,
+      semantic_tokens = true,
+    }
   }
 }
 

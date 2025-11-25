@@ -12,13 +12,29 @@
       "rev": "e28ce52",
       "src": "https://github.com/folke/lazydev.nvim"
     },
+    "lualine.nvim": {
+      "rev": "47f91c4",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
     "mason.nvim": {
       "rev": "ad7146a",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "neovim-ayu": {
+      "rev": "38caa8b",
+      "src": "https://github.com/Shatur/neovim-ayu"
+    },
+    "nvim": {
+      "rev": "da33755",
+      "src": "https://github.com/catppuccin/nvim"
+    },
     "nvim-autopairs": {
       "rev": "7a2c97c",
       "src": "https://github.com/windwp/nvim-autopairs"
+    },
+    "nvim-colorizer.lua": {
+      "rev": "81e676d",
+      "src": "https://github.com/catgoose/nvim-colorizer.lua"
     },
     "nvim-lspconfig": [],
     "nvim-treesitter": {

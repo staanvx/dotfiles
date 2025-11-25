@@ -12,6 +12,7 @@ vim.o.cursorline = false
 vim.o.showmatch = true
 vim.o.cmdheight = 1
 vim.opt.winborder = "single"
+vim.o.showmode = false
 
 vim.o.wrap = false
 vim.g.have_nerd_font = true

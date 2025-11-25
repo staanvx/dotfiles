@@ -58,12 +58,12 @@ require('telescope').load_extension('fzf')
 require("telescope").load_extension("ui-select")
 
 -- moonfly (black)
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000", fg = "#36c692" })
-vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5189" })
+--vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#000000", fg = "#36c692" })
+--vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5189" })
 
 -- nightfly
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#011627", fg = "#21c7a8" })
-vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5874" })
+--vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "#011627", fg = "#21c7a8" })
+--vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE", fg = "#ff5874" })
 
 local builtin = require('telescope.builtin')
 
