@@ -1,4 +1,4 @@
 cd ~/Music/music-fuck-streaming/
 
-launch --title "music" rmpc
+launch rmpc
 focus

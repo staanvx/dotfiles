@@ -1,5 +1,5 @@
 cd ~
 
-launch --title "home" /bin/zsh
+launch /bin/zsh
 focus
 

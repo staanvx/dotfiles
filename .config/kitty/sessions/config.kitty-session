@@ -1,4 +1,4 @@
 cd ~/.dotfiles
 
-launch --title "config" /bin/zsh
+launch /bin/zsh
 focus
