@@ -10,22 +10,14 @@ else
   export EDITOR='nvim'
 fi
 
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --color bg:#011627 \
-  --color bg+:#0e293f \
-  --color border:#2c3043 \
-  --color fg:#acb4c2 \
-  --color fg+:#d6deeb \
-  --color gutter:#0e293f \
-  --color header:#82aaff \
-  --color hl+:#f78c6c \
-  --color hl:#f78c6c \
-  --color info:#ecc48d \
-  --color marker:#f78c6c \
-  --color pointer:#ff5874 \
-  --color prompt:#82aaff \
-  --color spinner:#21c7a8
-"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#6C7086,label:#CDD6F4"
+
+bindkey -e
 
 alias vim="nvim"
 
@@ -41,10 +33,54 @@ alias cd="z"
 
 alias lg="lazygit"
 
+alias la="~/.config/scripts/launcher.sh"
+
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-cal
+source <(fzf --zsh)
+
+autoload -Uz add-zsh-hook
+
+# Команды, для которых хотим менять заголовок
+typeset -ga KITTY_TITLE_CMDS
+KITTY_TITLE_CMDS=(
+  nvim vim
+  ssh mosh
+  htop top btop btm
+  less more man
+  ranger yazi lf
+  tig gitui lazygit
+  rmpc
+)
+
+# Перед выполнением команды — если она из списка, ставим её в title
+_kitty_title_preexec() {
+  emulate -L zsh
+  local cmd=${1%% *}   # первое слово команды
+
+  local c
+  for c in $KITTY_TITLE_CMDS; do
+    if [[ $cmd == $c ]]; then
+      print -Pn "\e]0;${cmd}\a"
+      return
+    fi
+  done
+
+  # для остальных команд ничего не делаем → никакого мигания
+}
+
+# Когда возвращаемся на промпт — ставим "zsh" или директорию
+_kitty_title_precmd() {
+  emulate -L zsh
+  # вариант 1: просто zsh
+  print -Pn '\e]0;zsh\a'
+  # вариант 2: показать cwd
+  # print -Pn '\e]0;%~\a'
+}
+
+add-zsh-hook preexec _kitty_title_preexec
+add-zsh-hook precmd  _kitty_title_precmd
