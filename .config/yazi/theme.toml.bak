@@ -1,0 +1,159 @@
+[mgr]
+cwd = { fg = "#21c7a8" }
+
+# Hovered
+hovered         = { reversed = true }
+preview_hovered = { underline = true }
+
+# Find
+find_keyword  = { fg = "#e3d18a", bold = true, italic = true, underline = true }
+find_position = { fg = "#ff5874", bg = "reset", bold = true, italic = true }
+
+# Marker
+marker_copied   = { fg = "#21c7a8", bg = "#21c7a8" }
+marker_cut      = { fg = "#ff5874", bg = "#ff5874" }
+marker_marked   = { fg = "#82aaff", bg = "#82aaff" }
+marker_selected = { fg = "#e3d18a", bg = "#e3d18a" }
+
+# Count
+count_copied   = { fg = "#1d3b53", bg = "#21c7a8" }
+count_cut      = { fg = "#1d3b53", bg = "#ff5874" }
+count_selected = { fg = "#1d3b53", bg = "#e3d18a" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#1d3b53" }
+
+[tabs]
+active   = { reversed = true }
+inactive = {}
+
+[status]
+overall = { fg = "#d6deeb", bg = "reset" }
+
+sep_left  = { open = "█", close = "█" }
+sep_right = { open = "█", close = "█" }
+
+progress_label  = { fg = "#d6deeb", bold = true }
+progress_normal = { fg = "#82aaff", bg = "#1d3b53" }
+progress_error  = { fg = "#fc514e", bg = "#1d3b53" }
+
+perm_type  = { fg = "#a1cd5e" }
+perm_read  = { fg = "#ecc48d" }
+perm_write = { fg = "#fc514e" }
+perm_exec  = { fg = "#7fdbca" }
+perm_sep   = { fg = "#7c8f8f" }
+
+[mode]
+normal_main = { fg = "#1d3b53", bg = "#82aaff", bold = true } # mode_normal
+normal_alt  = { fg = "#1d3b53", bg = "#ae81ff", bold = true }
+
+select_main = { fg = "#1d3b53", bg = "#e3d18a", bold = true } # mode_select
+select_alt  = { fg = "#1d3b53", bg = "#ae81ff", bold = true }
+
+unset_main  = { fg = "#1d3b53", bg = "#ff5874", bold = true } # mode_unset
+unset_alt   = { fg = "#1d3b53", bg = "#ae81ff", bold = true }
+
+[pick]
+border   = { fg = "#1d3b53" }
+active   = { fg = "#c792ea", bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "#1d3b53" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+[confirm]
+border     = { fg = "#1d3b53" }
+title      = { fg = "#c792ea" }
+content    = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ " [Y]es ", " (N)o " ]
+
+[cmp]
+border   = { fg = "#1d3b53" }
+active   = { reversed = true }
+inactive = {}
+
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+[tasks]
+border  = { fg = "#1d3b53" }
+title   = {}
+hovered = { fg = "#c792ea", underline = true }
+
+[which]
+cols            = 3
+mask            = { bg = "#1d3b53" }
+cand            = { fg = "#7fdbca" }
+rest            = { fg = "#d6deeb" }
+desc            = { fg = "#c792ea" }
+separator       = "  "
+separator_style = { fg = "#7c8f8f" }
+
+[help]
+on      = { fg = "#7fdbca" }
+run     = { fg = "#c792ea" }
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#1d3b53", bg = "#bdc1c6" }
+
+[notify]
+title_info  = { fg = "#a1cd5e" }
+title_warn  = { fg = "#e3d18a" }
+title_error = { fg = "#fc514e" }
+
+[filetype]
+rules = [
+  # Images
+  { mime = "image/*", fg = "#e3d18a" },
+
+  # Media
+  { mime = "{audio,video}/*", fg = "#c792ea" },
+
+  # Archives
+  { mime = "application/{,g}zip", fg = "#ff5874" },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#ff5874" },
+
+  # Documents
+  { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#7fdbca" },
+
+  # Empty files
+  { mime = "inode/x-empty", fg = "#fc514e" },
+
+  # Special files
+  { name = "*", is = "orphan", bg = "#ff5874" },
+  { name = "*", is = "exec", fg = "green" },
+
+  # Dummy files
+  { name = "*", is = "dummy", bg = "#ff5874" },
+  { name = "*/", is = "dummy", bg = "#ff5874" },
+
+  # Fallback
+  { name = "*", fg = "#d6deeb" },
+  { name = "*/", fg = "#82aaff" }
+]
+
+[icon]
+
+globs = []
+dirs  = [
+  { name = ".config", text = "" },
+  { name = ".git", text = "" },
+  { name = "Desktop", text = "" },
+  { name = "Development", text = "" },
+  { name = "Documents", text = "" },
+  { name = "Downloads", text = "" },
+  { name = "Library", text = "" },
+  { name = "Movies", text = "" },
+  { name = "Music", text = "" },
+  { name = "Pictures", text = "" },
+  { name = "Public", text = "" },
+  { name = "Videos", text = "" },
+]
