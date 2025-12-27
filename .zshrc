@@ -11,7 +11,7 @@ else
 fi
 
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=bg+:#313245,spinner:#F5E0DC,hl:#F38BA8 \
 --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
 --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
 --color=selected-bg:#45475A \
@@ -35,8 +35,16 @@ alias lg="lazygit"
 
 alias la="~/.config/scripts/launcher.sh"
 
+
+alias lofi='mpv --no-video https://youtu.be/4xDzrJKXOOY'
+
+
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+
+ksave() {
+  kitty @ action save_as_session --relocatable "$PWD/$(basename "$PWD").kitty-session"
+}
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
@@ -45,10 +53,9 @@ source <(fzf --zsh)
 
 autoload -Uz add-zsh-hook
 
-# Команды, для которых хотим менять заголовок
 typeset -ga KITTY_TITLE_CMDS
 KITTY_TITLE_CMDS=(
-  nvim vim
+  nvim vim emacs
   ssh mosh
   htop top btop btm
   less more man
@@ -57,10 +64,9 @@ KITTY_TITLE_CMDS=(
   rmpc
 )
 
-# Перед выполнением команды — если она из списка, ставим её в title
 _kitty_title_preexec() {
   emulate -L zsh
-  local cmd=${1%% *}   # первое слово команды
+  local cmd=${1%% *}
 
   local c
   for c in $KITTY_TITLE_CMDS; do
@@ -70,15 +76,11 @@ _kitty_title_preexec() {
     fi
   done
 
-  # для остальных команд ничего не делаем → никакого мигания
 }
 
-# Когда возвращаемся на промпт — ставим "zsh" или директорию
 _kitty_title_precmd() {
   emulate -L zsh
-  # вариант 1: просто zsh
   print -Pn '\e]0;zsh\a'
-  # вариант 2: показать cwd
   # print -Pn '\e]0;%~\a'
 }
 
