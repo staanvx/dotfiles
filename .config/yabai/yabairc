@@ -13,7 +13,7 @@ yabai -m config                                 \
     window_placement             second_child   \
     window_insertion_point       focused        \
     window_zoom_persist          on             \
-    window_shadow                off             \
+    window_shadow                float             \
     window_animation_duration    0.0            \
     window_animation_easing      ease_out_circ  \
     window_opacity_duration      0.2            \
@@ -47,9 +47,13 @@ yabai -m space 7 --label desk7
 yabai -m space 8 --label desk8
 yabai -m space 9 --label desk9
 
-yabai -m rule --add app="^Ghostty$"           space=desk1
+#yabai -m rule --add app="^Ghostty$"           space=desk1
+#yabai -m signal --add event=window_created app="Ghostty" action="yabai -m space --focus 1"
+
 yabai -m rule --add app="^Brave Browser$"     space=desk2
-yabai -m rule --add app="^kitty$"             space=desk3
+
+yabai -m rule --add app="^kitty$"             space=desk1
+#yabai -m signal --add event=window_created app="kitty" action="yabai -m space --focus 3"
 
 # float system preferences
 yabai -m rule --add app="^Системные настройки$" manage=off
