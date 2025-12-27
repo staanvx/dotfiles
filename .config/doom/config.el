@@ -3,7 +3,7 @@
 
 (setq confirm-kill-emacs nil)
 
-(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(undecorated-round . t))
 
 (menu-bar-mode -1)
 
@@ -17,7 +17,9 @@
 
 (blink-cursor-mode 1)
 
-(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'catppuccin)
+
+
 
 ;; Отключить нижний разделитель
 (setq window-divider-default-bottom-width 0)

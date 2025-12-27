@@ -10,7 +10,6 @@ vim.pack.add({
   -- UI
   { src = 'https://github.com/bluz71/vim-moonfly-colors' },
   { src = 'https://github.com/bluz71/vim-nightfly-colors' },
-  { src = 'https://github.com/Shatur/neovim-ayu' },
   { src = 'https://github.com/catppuccin/nvim' },
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/nvim-lualine/lualine.nvim' },

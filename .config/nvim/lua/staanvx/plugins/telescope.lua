@@ -73,7 +73,7 @@ map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 map('n', '<leader>fm', builtin.man_pages, { desc = 'Telescope manpage entries' })
 map('n', '<leader>tt', builtin.treesitter, { desc = 'Telescope with treesitter' })
-map('n', '<leader>k', builtin.buffers, { desc = 'Telescope buffers' })
+map('n', '<leader>r', builtin.buffers, { desc = 'Telescope buffers' })
 
 map('n', '<leader>fd', function()
   builtin.find_files {

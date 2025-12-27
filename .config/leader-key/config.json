@@ -1,0 +1,17 @@
+{
+  "actions" : [
+    {
+      "key" : "enter",
+      "type" : "application",
+      "value" : "/Applications/Ghostty.app"
+    },
+    {
+      "key" : "w",
+      "type" : "application",
+      "value" : "/Applications/Brave Browser.app"
+    }
+  ],
+  "key" : "🚫",
+  "label" : "Config error",
+  "type" : "group"
+}

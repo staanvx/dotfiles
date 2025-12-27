@@ -56,6 +56,10 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": [],
+    "tokyonight.nvim": {
+      "rev": "5da1b76",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    },
     "typst-preview.nvim": {
       "rev": "285d040",
       "src": "https://github.com/chomosuke/typst-preview.nvim"

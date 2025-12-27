@@ -1,24 +1,20 @@
-#theme = Solarized Dark Higher Contrast
-#theme = Builtin Pastel Dark
-#theme = Duckbones
-#theme = Ayu
 theme = Catppuccin Mocha
-#config-file = ~/.config/ghostty/themes/nightfly
+#config-file = ~/.config/ghostty/themes/moonfly
 #config-file = ~/.config/ghostty/themes/mayhem
-background-opacity = 0.9
-#background = #0b0e14
+background-opacity = 0.75
+background = #000000
 
 window-colorspace = "display-p3"
 #window-decoration = false
 window-padding-balance = true
 window-save-state = always
-#window-padding-color = extend
 
 font-family = Hack Nerd Font Mono
 font-size = 20
 
 shell-integration-features = no-cursor
 cursor-style = block
+cursor-style-blink = true
 
 window-padding-x = 2
 window-padding-y = 0 

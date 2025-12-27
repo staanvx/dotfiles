@@ -78,3 +78,5 @@
 
 (package! ef-themes)
 
+(package! catppuccin-theme)
+

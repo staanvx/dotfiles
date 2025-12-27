@@ -1,4 +1,83 @@
-cd ~/.dotfiles
 
-launch /bin/zsh
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [1], "window_groups": [{"id": 1, "window_ids": [1]}]}}
+cd ../../..
+
+launch 'kitty-unserialize-data={"id": 1}'
 focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [3, 4, 7, 8, 9, 17, 16, 2, 19, 18], "window_groups": [{"id": 2, "window_ids": [2]}]}}
+cd ../../../.dotfiles/.config/kitty
+
+launch 'kitty-unserialize-data={"id": 2}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [20], "window_groups": [{"id": 20, "window_ids": [26]}]}}
+cd ../../../.local/share/kitty/sessions
+
+launch 'kitty-unserialize-data={"id": 26}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [24], "window_groups": [{"id": 24, "window_ids": [41]}]}}
+cd ../../../.dotfiles/.config/kitty
+
+launch 'kitty-unserialize-data={"id": 41, "cmd_at_shell_startup": "vim"}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [44], "window_groups": [{"id": 25, "window_ids": [44]}]}}
+cd ../../..
+
+launch 'kitty-unserialize-data={"id": 44}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [45], "window_groups": [{"id": 26, "window_ids": [45]}]}}
+cd ../../../.dotfiles/.config/kitty
+
+launch 'kitty-unserialize-data={"id": 45}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [], "window_groups": [{"id": 27, "window_ids": [46]}]}}
+cd ../../../.dotfiles/.config/kitty
+
+launch 'kitty-unserialize-data={"id": 46}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [], "window_groups": [{"id": 28, "window_ids": [47]}]}}
+cd ../../../.local/share/kitty
+
+launch 'kitty-unserialize-data={"id": 47}'
+focus
+
+new_tab
+layout tall
+enabled_layouts tall,fat,grid,horizontal,splits,stack,vertical
+set_layout_state {"main_bias": [0.5, 0.5], "biased_map": {}, "opts": {"full_size": 1, "bias": 50, "mirrored": "n"}, "class": "Tall", "all_windows": {"active_group_idx": 0, "active_group_history": [32], "window_groups": [{"id": 32, "window_ids": [55]}]}}
+cd ../../../.dotfiles/.config/kitty
+
+launch 'kitty-unserialize-data={"id": 55}'
+focus
+
+focus_tab 3

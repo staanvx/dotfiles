@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SESSIONS_DIR="${1:-$HOME/.config/kitty/sessions}"
+SESSIONS_DIR="${1:-$HOME/.local/share/kitty/sessions}"
 
 shopt -s nullglob
 
@@ -13,9 +13,9 @@ mapfile -t files < <(find "$SESSIONS_DIR" -type f -name '*.kitty-session' | sort
 ((${#files[@]})) || exit 0
 
 pick="$(printf '%s\n' "${files[@]}" |
-    sed "s|^$HOME/.config/kitty/||" |
-    sk --prompt='GO to > ' --margin 10% --color=dark,matched:#00FF00,current:#ff5189,current_bg:#000000,prompt:#36c692)"
+    sed -e "s|^$SESSIONS_DIR/||" -e "s|\.kitty-session$||" |
+    fzf --prompt='GO to > ' --margin 10%)"
 
 [ -n "$pick" ] || exit 0
 
-kitty @ action goto_session "$pick"
+kitty @ action goto_session "$SESSIONS_DIR/$pick.kitty-session"

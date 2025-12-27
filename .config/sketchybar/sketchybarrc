@@ -12,7 +12,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=32 blur_radius=0 color=0xff000000 padding_left=20 padding_right=10
+sketchybar --bar position=top height=32 color=0xff000000 padding_left=20 padding_right=10
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -33,32 +33,11 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-ITEM_H=24
-ITEM_W=24
-
-sketchybar --add event aerospace_workspace_change
-
-for sid in $(aerospace list-workspaces --all); do
-  sketchybar --add item space.$sid left \
-    --subscribe space.$sid aerospace_workspace_change \
-    --set space.$sid \
-      width=$ITEM_W \
-      padding_left=0 padding_right=0 \
-      background.drawing=on \
-      background.height=$ITEM_H \
-      background.corner_radius=0 \
-      background.padding_left=0 background.padding_right=0 \
-      label="$sid" \
-      label.width=$ITEM_W \
-      label.align=center \
-      label.padding_left=0 label.padding_right=0 \
-      label.font="ComicShannsMono Nerd Font:Bold:16.0" \
-      icon.drawing=off \
-      click_script="aerospace workspace $sid" \
-      script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-done
-
 ##### Adding Left Items #####
+sketchybar --add item front_app left \
+           --set front_app label.color="0xffecc48d" label.font="ComicShannsMono Nerd Font:Bold:16.0" \
+           icon=󱃵 icon.color=0xffff5874 script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
 
 sketchybar --add item chevron left \
            --set chevron icon= icon.color=0xfff48739 label.drawing=off \
@@ -66,14 +45,12 @@ sketchybar --add item chevron left \
            --add item layout left \
            --set layout update_freq=5 icon= icon.color=0xff82aaff label.color=0xff82aaff script="$PLUGIN_DIR/layout.sh" \
            --add item music left \
-           --set music update_freq=5 icon.color=0xffc792ea label.color=0xffc792ea script="$PLUGIN_DIR/rmpc.sh" 
+           --set music update_freq=5 icon.color=0xffc792ea label.color=0xffc792ea script="$PLUGIN_DIR/rmpc.sh" \
+           --add item vpn left \
+           --set vpn update_freq=5  script="$PLUGIN_DIR/vpn.sh"
+
 
 ##### Adding Center Items #####
-
-sketchybar --add item front_app center \
-           --set front_app label.color="0xffecc48d" label.font="ComicShannsMono Nerd Font:Bold:16.0" \
-           icon=󱃵 icon.color=0xffff5874 script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 
@@ -88,8 +65,8 @@ sketchybar --add item clock right \
            --add item ram right \
            --set ram update_freq=5 icon=  icon.color=0xffae81ff label.color=0xffae81ff script="$PLUGIN_DIR/ram.sh" \
            --add item cpu right \
-           --set cpu update_freq=5 label.width=40 icon=  icon.color=0xff80a0ff label.color=0xff80a0ff script="$PLUGIN_DIR/cpu.sh" \
-           --add item vpn right \
-           --set vpn update_freq=5  script="$PLUGIN_DIR/vpn.sh"
+           --set cpu update_freq=5 icon= icon.color=0xff80a0ff label.color=0xff80a0ff script="$PLUGIN_DIR/cpu.sh" \
+#           --set cpu update_freq=5 label.width=40 icon=  icon.color=0xff80a0ff label.color=0xff80a0ff script="$PLUGIN_DIR/cpu.sh" \
+
 
 sketchybar --update

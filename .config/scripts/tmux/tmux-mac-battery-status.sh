@@ -1,4 +1,4 @@
-#!/bin/bash
+#!rbin/bash
 
 CLR_5="#85dc85"
 CLR_4="#85dc85"

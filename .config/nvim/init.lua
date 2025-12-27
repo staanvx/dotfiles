@@ -25,24 +25,6 @@ vim.lsp.config('pyright', {
   capabilities = capabilities,
 })
 
-vim.lsp.config("sqls", {
-  cmd = { "sqls" },
-  filetypes = { "sql" },
-  root_markers = { ".git/" },
-  capabilities = capabilities,
-  settings = {
-    sqls = {
-      connections = {
-        {
-          driver = "postgresql",
-          dataSourceName =
-          "host=127.0.0.1 port=5432 user=stan dbname=lab_2 sslmode=disable options='-c search_path=lab2,lab1,public'",
-        },
-      },
-    },
-  },
-})
-
 -- typst
 vim.lsp.config["tinymist"] = {
   cmd = { "tinymist" },
