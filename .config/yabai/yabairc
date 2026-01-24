@@ -3,9 +3,11 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# with sketchybar external bar 32
+
 yabai -m config                                 \
-    external_bar                 all:32:0       \
-    menubar_opacity              1.0            \
+    external_bar                 all:0:0       \
+    menubar_opacity              0.0            \
     mouse_follows_focus          off            \
     focus_follows_mouse          off            \
     display_arrangement_order    default        \
