@@ -11,6 +11,7 @@ vim.pack.add({
   { src = 'https://github.com/bluz71/vim-moonfly-colors' },
   { src = 'https://github.com/bluz71/vim-nightfly-colors' },
   { src = 'https://github.com/catppuccin/nvim' },
+  { src = 'https://github.com/folke/tokyonight.nvim'},
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/nvim-lualine/lualine.nvim' },
   -- editor
@@ -36,7 +37,8 @@ vim.pack.add({
 --require("staanvx.plugins.moonfly-colors")
 --require("staanvx.plugins.nightfly-colors")
 --require("staanvx.plugins.ayu-colors")
-require("staanvx.plugins.catppuccin")
+--require("staanvx.plugins.catppuccin")
+require("staanvx.plugins.tokyonight")
 require("staanvx.plugins.web-devicons")
 require("staanvx.plugins.autopairs")
 require("staanvx.plugins.lazydev")
