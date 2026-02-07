@@ -59,7 +59,7 @@ fi
 icon_str="${prefix}${icon}"
 
 sketchybar --set "$NAME" \
-  icon="$icon_str" \
+  icon="BAT" \
   icon.color="$color" \
   label="${pct}%" \
   label.color="$color"

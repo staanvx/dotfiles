@@ -8,4 +8,4 @@ else
     state="OFF"
 fi
 
-sketchybar --set $NAME icon=󰒃  icon.color="$color" label="$state" label.color="$color"
+sketchybar --set $NAME icon=VPN icon.color="$color" label="$state" label.color="$color"

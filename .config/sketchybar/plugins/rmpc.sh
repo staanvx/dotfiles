@@ -20,4 +20,4 @@ case "$state" in
     ;;
 esac
 
-sketchybar --set "$NAME" icon="$icon" label="$label"
+sketchybar --set "$NAME" icon="MPD" label="$label"

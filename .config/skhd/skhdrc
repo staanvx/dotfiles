@@ -66,7 +66,8 @@ alt - w : open '/Applications/Brave Browser.app'
 #ctrl + shift + alt - e : open '/Applications/Emacs.app'
 #ctrl + shift + alt - g : open '/Applications/Ghostty.app'
 alt - t : open '/Applications/Telegram.app'
-alt - return : open '/Applications/kitty.app'
+#alt - return : open '/Applications/kitty.app'
+alt - return : open '/Applications/WezTerm.app'
 alt - d : open '/Applications/Sol.app'
 
 ctrl + alt - r : yabai --restart-service

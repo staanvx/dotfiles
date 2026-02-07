@@ -33,30 +33,20 @@ function M.setup()
     })
 
     window:set_left_status(wezterm.format {
-      { Attribute = { Italic = true } },
-      { Foreground = { Color = '#000000' } },
-      { Background = { Color = '#80a0ff' } },
-      { Text = '  ' .. workspace .. ' ' },
       { Attribute = { Italic = false } },
+      { Foreground = { Color = '#f7768e' } },
       { Background = { Color = '#1a1b26' } },
-      { Foreground = { Color = "#ffcc66" } },
-      { Text = " " .. layout .. "  " },
-      { Foreground = { Color = "#b2ceee" } },
-      { Text = music_state .. "  " },
-      { Foreground = { Color = vpn_state.color } },
-      { Text = vpn_state.text .. " " },
+      { Text = ' ' .. '' },
+      { Attribute = { Italic = false } },
+      { Foreground = { Color = '#e0af68' } },
+      { Background = { Color = '#1a1b26' } },
+      { Text = ' ' .. workspace .. '' },
+      { Attribute = { Italic = false } },
+      { Foreground = { Color = '#73daca' } },
+      { Background = { Color = '#1a1b26' } },
+      { Text = ' ' .. '->' .. ' ' },
     })
 
-    window:set_right_status(wezterm.format {
-      { Foreground = { Color = "#80a0ff" } },
-      { Text = cpu_text .. "  " },
-      { Foreground = { Color = "#ae81ff" } },
-      { Text = ram_text .. "  " },
-      { Foreground = { Color = batt.color } },
-      { Text = batt.text .. "  " },
-      { Foreground = { Color = '#e4e4e4' } },
-      { Text = '󰥔 ' .. date },
-    })
   end)
 
   function tab_title(tab_info)
@@ -72,25 +62,25 @@ function M.setup()
     function(tab, tabs, panes, config, hover, max_width)
       local title = tab_title(tab)
 
-      local max_len = 15
+      local max_len = 20
       if #title > max_len then
         title = title:sub(1, max_len - 1) .. "…"
       end
 
       if tab.is_active then
         return {
-          { Text = " [" .. "" .. "]" .. " " .. title .. '  ' },
+          { Text = " " .. (tab.tab_index + 1) .. ":" .. " " .. title .. ' ' },
         }
       end
 
       if tab.is_last_active then
         return {
-          { Text = " [" .. (tab.tab_index + 1) .. "]" .. " " .. title .. ' *' },
+          { Text = " " .. (tab.tab_index + 1) .. ":" .. " " .. title .. ' ' },
         }
       end
 
       return {
-        { Text = " [" .. (tab.tab_index + 1) .. "]" .. " " .. title .. '  ' },
+        { Text = " " .. (tab.tab_index + 1) .. ":" .. " " .. title .. ' ' },
       }
     end
   )

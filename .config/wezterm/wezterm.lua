@@ -1,36 +1,36 @@
 local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
---local statusline = require("statusline")
+local statusline = require("statusline")
 
---statusline.setup()
+statusline.setup()
 
 config.enable_kitty_keyboard = false
 config.max_fps = 120
 
 config.font = wezterm.font 'Hack Nerd Font Mono'
-config.font_size = 20.0
+config.font_size = 22.0
 
-config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = 'default'
 config.colors = {
---  background = 'black',
+  background = 'black',
+
   tab_bar = {
-    background = "#1c1c1c",
+    background = "#1a1b26",
 
     active_tab = {
-      bg_color = '#000000',
-      fg_color = '#ff5189',
-      intensity = 'Bold',
+      bg_color = '#1a1b26',
+      fg_color = '#7dcfff',
     },
 
     inactive_tab = {
       bg_color = '#1a1b26',
-      fg_color = '#9e9e9e',
+      fg_color = '#a9b1d6',
     },
 
     inactive_tab_hover = {
-      bg_color = '#3b3052',
-      fg_color = '#9e9e9e',
+      bg_color = '#7dcfff',
+      fg_color = 'black',
       italic = true,
     },
   },
@@ -40,14 +40,15 @@ config.window_close_confirmation = 'NeverPrompt'
 config.window_decorations = "RESIZE"
 --config.window_decorations = "RESIZE|MACOS_FORCE_SQUARE_CORNERS"
 
+
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
-config.tab_max_width = 16
-
-config.status_update_interval = 5000
-
+config.tab_max_width = 20
+config.native_macos_fullscreen_mode = false
+--config.status_update_interval = 5000
+config.audible_bell = "Disabled"
 
 config.window_padding = {
   left = 5,
@@ -55,5 +56,32 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+
+
+config.window_content_alignment = {
+  horizontal = 'Center',
+  vertical = 'Center',
+}
+
+config.keys = {
+  {
+    key = 'f',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.ToggleFullScreen,
+  },
+}
+
+wezterm.on("window-resized", function(window, _)
+  local overrides = window:get_config_overrides() or {}
+
+  if window:get_dimensions().is_full_screen then
+    overrides.window_background_opacity = 1.0
+  else
+    overrides.window_background_opacity = 0.85
+  end
+
+  window:set_config_overrides(overrides)
+end)
+
 
 return config
