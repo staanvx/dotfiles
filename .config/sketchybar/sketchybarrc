@@ -81,9 +81,7 @@ sketchybar --add item chevron left \
            --add item layout left \
            --set layout update_freq=5 icon=KEY icon.color=0xff82aaff label.color=0xff82aaff script="$PLUGIN_DIR/layout.sh" \
            --add item music left \
-           --set music update_freq=5 icon.color=0xffc792ea label.color=0xffc792ea script="$PLUGIN_DIR/rmpc.sh" \
-           --add item vpn left \
-           --set vpn update_freq=5  script="$PLUGIN_DIR/vpn.sh"
+           --set music update_freq=5 icon.color=0xffc792ea label.color=0xffc792ea script="$PLUGIN_DIR/rmpc.sh" 
 
 
 ##### Adding Center Items #####
@@ -102,6 +100,8 @@ sketchybar --add item clock right \
            --set ram update_freq=5 icon=RAM icon.color=0xffae81ff label.color=0xffae81ff script="$PLUGIN_DIR/ram.sh" \
            --add item cpu right \
            --set cpu update_freq=5 icon=CPU icon.color=0xff80a0ff label.color=0xff80a0ff script="$PLUGIN_DIR/cpu.sh" \
+           --add item vpn right \
+           --set vpn update_freq=5  script="$PLUGIN_DIR/vpn.sh"
 
 
 sketchybar --update
