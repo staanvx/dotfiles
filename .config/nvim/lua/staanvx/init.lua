@@ -11,7 +11,7 @@ vim.pack.add({
   { src = 'https://github.com/bluz71/vim-moonfly-colors' },
   { src = 'https://github.com/bluz71/vim-nightfly-colors' },
   { src = 'https://github.com/catppuccin/nvim' },
-  { src = 'https://github.com/folke/tokyonight.nvim'},
+  { src = 'https://github.com/folke/tokyonight.nvim' },
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/nvim-lualine/lualine.nvim' },
   -- editor
@@ -52,3 +52,4 @@ require("staanvx.plugins.fzf-lua")
 require("staanvx.plugins.which-key")
 require("staanvx.plugins.colorizer")
 require("staanvx.plugins.lualine")
+require("staanvx.plugins.smear-cursor")
