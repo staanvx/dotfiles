@@ -34,11 +34,12 @@ vim.pack.add({
 })
 
 
---require("staanvx.plugins.moonfly-colors")
+require("staanvx.plugins.moonfly-colors")
 --require("staanvx.plugins.nightfly-colors")
 --require("staanvx.plugins.ayu-colors")
 --require("staanvx.plugins.catppuccin")
-require("staanvx.plugins.tokyonight")
+--require("staanvx.plugins.tokyonight")
+
 require("staanvx.plugins.web-devicons")
 require("staanvx.plugins.autopairs")
 require("staanvx.plugins.lazydev")
