@@ -3,15 +3,14 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 local statusline = require("statusline")
 require("system").setup(config)
-statusline.setup()
+--statusline.setup()
 
 config.enable_kitty_keyboard = false
 config.max_fps = 120
 
 config.font = wezterm.font 'Hack Nerd Font Mono'
-config.font_size = 22.0
 
-config.color_scheme = 'default'
+config.color_scheme = 'moonfly'
 config.colors = {
   background = 'black',
 
@@ -40,12 +39,6 @@ config.colors = {
 config.window_close_confirmation = 'NeverPrompt'
 
 
-config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = false
-config.tab_bar_at_bottom = false
-config.show_new_tab_button_in_tab_bar = false
-config.tab_max_width = 20
---config.status_update_interval = 5000
 config.audible_bell = "Disabled"
 
 config.window_padding = {
@@ -104,6 +97,16 @@ config.keys = {
 --   window:set_config_overrides(overrides)
 -- end)
 
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = false
+config.tab_bar_at_bottom = true
+config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 20
+--config.status_update_interval = 5000
+
+wezterm.on('update-right-status', function(window, pane)
+  window:set_right_status(window:active_workspace())
+end)
 
 return config
 
