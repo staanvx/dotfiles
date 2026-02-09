@@ -10,7 +10,7 @@ config.max_fps = 120
 
 config.font = wezterm.font 'Hack Nerd Font Mono'
 
-config.color_scheme = 'moonfly'
+config.color_scheme = 'Moonfly (Gogh)'
 config.colors = {
   background = 'black',
 
@@ -20,16 +20,16 @@ config.colors = {
 
     active_tab = {
       bg_color = 'black',
-      fg_color = '#7dcfff',
+      fg_color = '#74B2FF',
     },
 
     inactive_tab = {
-      bg_color = '#1a1b26',
-      fg_color = '#a9b1d6',
+      bg_color = '#323437',
+      fg_color = '#BDBDBD',
     },
 
     inactive_tab_hover = {
-      bg_color = '#7dcfff',
+      bg_color = '#74B2FF',
       fg_color = 'black',
       italic = true,
     },
@@ -104,9 +104,14 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 20
 --config.status_update_interval = 5000
 
-wezterm.on('update-right-status', function(window, pane)
-  window:set_right_status(window:active_workspace())
-end)
+--wezterm.on('update-right-status', function(window, pane)
+--  window:set_right_status(window:active_workspace())
+--end)
+
+-- sessions
+
+
+
 
 return config
 
