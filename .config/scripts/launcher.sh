@@ -15,7 +15,7 @@ for d in "${dirs[@]}"; do
 
   while IFS= read -r -d '' p; do
     files+=("$p")
-  done < <(find -L "$d" -maxdepth 1 -mindepth 1 -name '*.app' -print0 2>/dev/null)
+  done < <(find -L "$d" -maxdepth 1 -mindepth 1 -name '*.app' ! -name '.*' -print0 2>/dev/null)
 done
 
 (( ${#files[@]} )) || exit 0
@@ -23,7 +23,7 @@ done
 pick="$(printf '%s\n' "${files[@]}" |
         sort |
         sed "s|^$HOME|~|" |
-        fzf --prompt='open > ' --margin=5%)"
+        fzf --prompt='open > ' --margin=5% --layout=reverse)"
 
 [ -n "$pick" ] || exit 0
 

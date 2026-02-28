@@ -1,7 +1,8 @@
-theme = Catppuccin Mocha
-#config-file = ~/.config/ghostty/themes/moonfly
+#theme = Catppuccin Mocha
+theme = Rose Pine
+#config-file = ~/.config/ghostty/themes/nightfly
 #config-file = ~/.config/ghostty/themes/mayhem
-background-opacity = 0.75
+background-opacity = 1.0
 background = #000000
 
 window-colorspace = "display-p3"
@@ -16,7 +17,7 @@ shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = true
 
-window-padding-x = 2
+window-padding-x = 5
 window-padding-y = 0 
 
 macos-titlebar-style = hidden
@@ -28,7 +29,5 @@ quick-terminal-screen = macos-menu-bar
 
 keybind = global:cmd+backquote=toggle_quick_terminal
 
-macos-icon = custom-style
-macos-icon-frame = chrome
-macos-window-shadow = false
-macos-option-as-alt = true
+macos-non-native-fullscreen = padded-notch
+

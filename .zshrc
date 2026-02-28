@@ -3,7 +3,6 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -128,3 +127,4 @@ _kitty_title_precmd() {
 
 add-zsh-hook preexec _kitty_title_preexec
 add-zsh-hook precmd  _kitty_title_precmd
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"

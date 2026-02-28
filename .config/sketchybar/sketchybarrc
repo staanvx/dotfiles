@@ -92,7 +92,7 @@ sketchybar --add item chevron left \
 ##### Adding Right Items #####
 
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon=CLK  script="$PLUGIN_DIR/clock.sh" \
+           --set clock update_freq=10 icon=CLK icon.drawing=off script="$PLUGIN_DIR/clock.sh" \
            --add item volume right \
            --set volume icon.color=0xff00e6e6 label.color=0xff00e6e6 script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \

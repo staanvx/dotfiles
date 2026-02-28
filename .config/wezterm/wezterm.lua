@@ -10,7 +10,9 @@ config.max_fps = 120
 
 config.font = wezterm.font 'Hack Nerd Font Mono'
 
-config.color_scheme = 'Moonfly (Gogh)'
+
+--config.color_scheme = 'Nightfly (Gogh)'
+config.color_scheme = 'rose-pine'
 config.colors = {
   background = 'black',
 
@@ -19,8 +21,8 @@ config.colors = {
     background = "black",
 
     active_tab = {
-      bg_color = 'black',
-      fg_color = '#74B2FF',
+      bg_color = '#ae81ff',
+      fg_color = '#000000',
     },
 
     inactive_tab = {

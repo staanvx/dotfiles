@@ -20,6 +20,10 @@
       "rev": "ad7146a",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "neovim": {
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
+      "src": "https://github.com/rose-pine/neovim"
+    },
     "neovim-ayu": {
       "rev": "38caa8b",
       "src": "https://github.com/Shatur/neovim-ayu"
