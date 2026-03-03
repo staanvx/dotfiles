@@ -15,6 +15,7 @@ vim.pack.add({
   { src = 'https://github.com/rose-pine/neovim' },
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+  { src = 'https://github.com/akinsho/bufferline.nvim' },
   -- editor
   { src = 'https://github.com/nvim-lua/plenary.nvim' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
@@ -56,3 +57,4 @@ require("staanvx.plugins.which-key")
 require("staanvx.plugins.colorizer")
 require("staanvx.plugins.lualine")
 require("staanvx.plugins.smear-cursor")
+require("staanvx.plugins.bufferline")

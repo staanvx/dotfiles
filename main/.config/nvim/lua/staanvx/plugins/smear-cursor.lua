@@ -2,4 +2,6 @@ vim.pack.add({
   { src = 'https://github.com/sphamba/smear-cursor.nvim' }
 })
 
-require('smear_cursor').setup()
+require('smear_cursor').setup({
+  cursor_color = "#e0def4"
+})
