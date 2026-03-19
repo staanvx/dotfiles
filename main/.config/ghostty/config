@@ -1,9 +1,9 @@
-#theme = Catppuccin Mocha
-theme = Rose Pine
+theme = Vague
+#theme = Rose Pine
 #config-file = ~/.config/ghostty/themes/nightfly
 #config-file = ~/.config/ghostty/themes/mayhem
 background-opacity = 1.0
-background = #000000
+#background = #000000
 
 window-colorspace = "display-p3"
 #window-decoration = false

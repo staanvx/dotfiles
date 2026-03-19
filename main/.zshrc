@@ -58,7 +58,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=spinner:#ff007c \
 "
 
-alias vim="nvim"alias vim="nvim"
+alias vim="nvim"
 
 alias doom="~/.config/emacs/bin/doom"
 
@@ -128,3 +128,39 @@ _kitty_title_precmd() {
 add-zsh-hook preexec _kitty_title_preexec
 add-zsh-hook precmd  _kitty_title_precmd
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+
+fh() {
+  local dir
+  dir=$(fd . ~/.dotfiles \
+    --type d --hidden \
+    --exclude .git \
+    --exclude node_modules \
+    --exclude .cache \
+    2>/dev/null \
+    | sed "s|$HOME/||" \
+    | fzf --height 100% --preview "eza -la --icons --git $HOME/{}")
+
+  [[ -n "$dir" ]] && cd "$HOME/$dir"
+}
+
+fcd() {
+  local dir
+  dir=$(fd . ~/Documents ~/projects ~/edu ~/work \
+    --type d --hidden \
+    --exclude .git \
+    --exclude node_modules \
+    --exclude .cache \
+    2>/dev/null \
+    | sed "s|$HOME/||" \
+    | fzf --height 100% --preview "eza -la --icons --git $HOME/{}")
+
+  [[ -n "$dir" ]] && cd "$HOME/$dir"
+}
+
+fcd-widget() {
+  zle push-line
+  BUFFER="fcd"
+  zle accept-line
+}
+zle -N fcd-widget
+bindkey '^F' fcd-widget
