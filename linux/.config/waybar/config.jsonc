@@ -1,0 +1,128 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", 
+    "position": "bottom", 
+    "height": 30, 
+    "spacing": 4,
+    
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+    ],
+
+    "modules-right": [
+      "tray",
+      "hyprland/language",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "battery",
+      "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "format-icons": {
+          	"1": "A",
+          	"2": "B",
+          	"3": "C",
+          	"4": "D",
+          	"5": "E",
+          	"6": "F",
+          	"7": "G",
+          	"8": "H",
+          	"9": "I",
+          	"10": "J"
+	      },
+        "workspace-taskbar": {
+            "enable": true,
+            "update-active-window": true,
+            "format": "{icon}",
+            "icon-size": 20
+        },
+        "format": "{name}: {windows}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{:%a, %d %b %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+
+    "hyprland/language": {
+        "markup": true,
+        "format": "<span font='Terminess Nerd Font 16' color='#e3c78a'>KEY</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{}</span>",
+        "format-en": "EN ",
+        "format-ru": "RU "
+    },
+
+    "cpu": {
+        "markup": true,
+        "format": "<span font='Terminess Nerd Font 16' color='#e3c78a'>CPU</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{usage}%</span>",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "memory": {
+        "markup": true,
+        "interval": 5,
+        "format": "<span font='Terminess Nerd Font 16' color='#e3c78a'>RAM</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{percentage}%</span>"
+    },
+
+    "battery": {
+        "markup": true,
+        "interval": 60,
+        "format": "<span font='Terminess Nerd Font 16' color='#e3c78a'>BAT</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{capacity}%</span>",
+        "format-charging": "<span font='Terminess Nerd Font 16' color='#e3c78a'>BAT-C</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{capacity}%</span>",
+        "format-plugged": "<span font='Terminess Nerd Font 16' color='#e3c78a'>BAT-P</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{capacity}%</span>"
+    },
+
+    "network": {
+        "markup": true,
+        "format": "{ifname}",
+        "format-wifi": "<span font='Terminess Nerd Font 16' color='#e3c78a'>NET</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>wifi</span>",
+        "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-disconnected": "<span font='Terminess Nerd Font 16' color='#e3c78a'>NET</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>disconnected</span>",
+        "interval": 60
+    },
+
+    "pulseaudio": {
+        "markup": true,
+        "format": "<span font='Terminess Nerd Font 16' color='#e3c78a'>VOL</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{volume}%</span> <span font='Terminess Nerd Font 16' color='#e3c78a'>MIC</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{format_source}</span>",
+        "format-bluetooth": "<span font='Terminess Nerd Font 16' color='#e3c78a'>VOL-B</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{volume}%</span> <span font='Terminess Nerd Font 16' color='#e3c78a'>MIC</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{format_source}</span>",
+        "format-bluetooth-muted": "<span font='Terminess Nerd Font 16' color='#e3c78a'>VOL-B</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>OFF</span> <span font='Terminess Nerd Font 16' color='#e3c78a'>MIC</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{format_source}</span>",
+        "format-muted": "<span font='Terminess Nerd Font 16' color='#e3c78a'>VOL</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>OFF</span> <span font='Terminess Nerd Font 16' color='#e3c78a'>MIC</span> <span font='Terminess Nerd Font 16' color='#bdbdbd'>{format_source}</span>",
+        "format-source": "ON",
+        "format-source-muted": "OFF",
+        "on-click": "pavucontrol"
+    }
+}
