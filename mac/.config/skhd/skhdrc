@@ -8,7 +8,8 @@ alt - w : open '/Applications/Brave Browser.app'
 #ctrl + shift + alt - g : open '/Applications/Ghostty.app'
 alt - t : open '/Applications/Telegram.app'
 #alt - return : open '/Applications/kitty.app'
-alt - return : open '/Applications/WezTerm.app'
+#alt - return : open '/Applications/WezTerm.app'
+alt - return : open '/Applications/Ghostty.app'
 #alt - d : open '/Applications/Sol.app'
 
 

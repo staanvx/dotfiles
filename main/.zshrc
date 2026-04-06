@@ -164,3 +164,4 @@ fcd-widget() {
 }
 zle -N fcd-widget
 bindkey '^F' fcd-widget
+export PATH="$HOME/.local/bin:$PATH"

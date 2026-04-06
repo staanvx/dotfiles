@@ -46,8 +46,8 @@ automatically-unhide-macos-hidden-apps = false
     alt-f = 'fullscreen'
     ctrl-cmd-shift-f = 'macos-native-fullscreen'
 
-    ctrl-alt-shift-minus = 'resize smart -50'
-    ctrl-alt-shift-equal = 'resize smart +50'
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
 
     alt-1 = 'workspace 1' # terminal
     alt-2 = 'workspace 2' # browser
@@ -72,9 +72,9 @@ automatically-unhide-macos-hidden-apps = false
     alt-tab = 'workspace-back-and-forth'
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-    ctrl-alt-shift-semicolon = 'mode service'
+    alt-semicolon = 'mode service'
 
-    ctrl-alt-shift-space = 'layout floating tiling'
+    alt-space = 'layout floating tiling'
 
 # 'service' binding mode declaration.
 [mode.service.binding]
