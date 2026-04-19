@@ -124,6 +124,13 @@ layout {
     }
 }
 
+overview {
+    backdrop-color "#000000"
+    workspace-shadow {
+        off
+    }
+}
+
 spawn-at-startup "hypridle"
 spawn-at-startup "swaync"
 spawn-sh-at-startup "swaybg -i ~/Pictures/walls/wall_2.png"
