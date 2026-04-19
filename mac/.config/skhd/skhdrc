@@ -1,6 +1,7 @@
 # launch apps
 #alt - e : open -a Finder
-alt - w : open '/Applications/Brave Browser.app'
+alt - w : open '/Applications/Helium.app/'
+#alt - w : open '/Applications/Brave Browser.app'
 #ctrl + shift + alt - i : open '/Applications/Firefox.app'
 #ctrl + shift + alt - o : open '/Applications/LibreOffice.app'
 #ctrl + shift + alt - l : open '/Applications/Zathura.app'
