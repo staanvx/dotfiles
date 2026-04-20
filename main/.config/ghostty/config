@@ -2,7 +2,7 @@ theme = Vague
 #theme = Rose Pine
 #config-file = ~/.config/ghostty/themes/nightfly
 #config-file = ~/.config/ghostty/themes/mayhem
-background-opacity = 1.0
+background-opacity = 1.00
 #background = #000000
 
 window-colorspace = "display-p3"
@@ -20,16 +20,24 @@ cursor-style-blink = true
 window-padding-x = 5
 window-padding-y = 0 
 
-macos-titlebar-style = hidden
+macos-window-buttons = hidden
+macos-titlebar-style = tabs
 
 copy-on-select = clipboard
+
+# Linux-style terminal shortcuts.
+keybind = ctrl+shift+c=copy_to_clipboard:mixed
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+==increase_font_size:1
+keybind = ctrl++=increase_font_size:1
+keybind = ctrl+-=decrease_font_size:1
 
 #quick-terminal-animation-duration = 0
 quick-terminal-screen = macos-menu-bar 
 
 keybind = global:cmd+backquote=toggle_quick_terminal
 
-macos-non-native-fullscreen = padded-notch
+#macos-non-native-fullscreen = padded-notch
 
 # Send Cmd+number to tmux as Alt+number so tmux can select windows.
 keybind = super+digit_1=esc:1
