@@ -25,9 +25,8 @@ Temporary Items
 .apdisk
 
 
-.mpd/playlists/
-.mpd/mpd.db
-.mpd/mpd.log
-.mpd/mpd.pid
-.mpd/mpdstate
-
+main/.mpd/playlists/
+main/.mpd/mpd.db
+main/.mpd/mpd.log
+main/.mpd/mpd.pid
+main/.mpd/mpdstate
